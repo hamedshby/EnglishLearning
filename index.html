@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="آموزش زبان انگلیسی برای برنامه‌نویسان و آمادگی مصاحبه‌های شغلی"
+    >
+
+    <title>English for Software Engineers</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+
+        <button
+            id="menuToggle"
+            class="menu-toggle"
+            type="button"
+            aria-label="باز کردن منو"
+        >
+            ☰
+        </button>
+
+        <div class="mobile-brand">
+            <span class="mobile-brand-icon">EN</span>
+
+            <div>
+                <strong>English for Developers</strong>
+                <small>آمادگی مصاحبه شغلی</small>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Dark Overlay -->
+    <div
+        id="sidebarOverlay"
+        class="sidebar-overlay"
+    ></div>
+
+    <!-- Right Sidebar -->
+    <aside
+        id="sidebar"
+        class="sidebar"
+    >
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                EN
+            </div>
+
+            <div class="brand-content">
+                <h1>English for Developers</h1>
+                <p>آمادگی مصاحبه شغلی</p>
+            </div>
+
+            <button
+                id="closeSidebar"
+                class="close-sidebar"
+                type="button"
+                aria-label="بستن منو"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div class="course-progress">
+
+            <div class="progress-header">
+                <span>پیشرفت دوره</span>
+                <span id="progressPercent">0%</span>
+            </div>
+
+            <div class="progress-track">
+                <div
+                    id="progressBar"
+                    class="progress-bar"
+                ></div>
+            </div>
+
+            <p id="progressText">
+                هنوز هیچ درسی تکمیل نشده است.
+            </p>
+
+        </div>
+
+        <div class="sidebar-section-title">
+            <span>📚</span>
+            سرفصل‌های دوره
+        </div>
+
+        <nav
+            id="lessonMenu"
+            class="lesson-menu"
+        >
+            <!-- Lesson items are created by JavaScript -->
+        </nav>
+
+        <div class="sidebar-footer">
+
+            <div class="sidebar-footer-icon">
+                🎯
+            </div>
+
+            <div>
+                <strong>هدف دوره</strong>
+                <p>
+                    تقویت مکالمه کاری و موفقیت در مصاحبه‌های بین‌المللی
+                </p>
+            </div>
+
+        </div>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <div class="breadcrumb">
+                <span>خانه</span>
+                <span class="breadcrumb-separator">/</span>
+                <strong id="breadcrumbTitle">روز اول</strong>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button
+                    id="themeToggle"
+                    class="icon-button"
+                    type="button"
+                    title="تغییر حالت نمایش"
+                    aria-label="تغییر حالت نمایش"
+                >
+                    🌙
+                </button>
+
+            </div>
+
+        </div>
+
+        <article
+            id="lessonContent"
+            class="lesson-content"
+        >
+            <!-- Lesson content is created by JavaScript -->
+        </article>
+
+        <footer class="page-footer">
+            <p>
+                ساخته‌شده برای یادگیری
+                <strong>English for Software Engineers</strong>
+            </p>
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
