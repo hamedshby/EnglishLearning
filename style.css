@@ -872,6 +872,22 @@ a {
     text-align: left;
 }
 
+.quiz-question-box .question-text {
+    direction: rtl;
+
+    font-family: inherit;
+
+    text-align: right;
+}
+
+.quiz-options {
+    direction: ltr;
+
+    font-family: Arial, sans-serif;
+
+    text-align: left;
+}
+
 .answer-example {
     direction: ltr;
 
