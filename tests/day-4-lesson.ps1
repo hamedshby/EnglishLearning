@@ -31,8 +31,10 @@ $day3 = Get-Content -Raw -Encoding UTF8 -LiteralPath $day3Path
     }
 }
 
-if ($day4 -match 'day-4.*\.mp3') {
-    throw 'day-4.html references missing audio'
+@('audio/day-4-word.mp3', 'audio/day-4.mp3') | ForEach-Object {
+    if (-not (Test-Path -LiteralPath (Join-Path $projectRoot $_))) {
+        throw "day-4.html references missing audio: $_"
+    }
 }
 
 if (-not $index.Contains('data-lesson-id="4"')) {
