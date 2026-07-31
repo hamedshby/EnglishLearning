@@ -1,5 +1,7 @@
 const lessonContent = document.getElementById("lessonContent");
 const lessonMenu = document.getElementById("lessonMenu");
+const lessonGroupToggle = document.getElementById("lessonGroupToggle");
+const jobInterviewLessons = document.getElementById("jobInterviewLessons");
 const breadcrumbTitle = document.getElementById("breadcrumbTitle");
 
 const progressBar = document.getElementById("progressBar");
@@ -424,6 +426,22 @@ themeToggle.addEventListener("click", () => {
         isDark ? "dark" : "light"
     );
 });
+
+function toggleLessonGroup() {
+    const isExpanded =
+        lessonGroupToggle.getAttribute("aria-expanded") === "true";
+
+    lessonGroupToggle.setAttribute(
+        "aria-expanded",
+        String(!isExpanded)
+    );
+    jobInterviewLessons.hidden = isExpanded;
+}
+
+lessonGroupToggle.addEventListener(
+    "click",
+    toggleLessonGroup
+);
 
 lessonMenu.addEventListener("click", (event) => {
     const button = event.target.closest(

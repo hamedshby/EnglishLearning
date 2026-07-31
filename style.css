@@ -265,6 +265,68 @@ a {
     gap: 7px;
 }
 
+.lesson-group-toggle {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 10px 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    color: var(--text-primary);
+    background: var(--surface-secondary);
+
+    text-align: right;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+
+    transition: var(--transition);
+}
+
+.lesson-group-toggle:hover {
+    color: var(--primary);
+    border-color: rgba(105, 92, 255, 0.25);
+}
+
+.lesson-group-toggle:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.lesson-group-title {
+    flex-grow: 1;
+}
+
+.lesson-group-chevron {
+    flex-shrink: 0;
+
+    font-size: 18px;
+    line-height: 1;
+
+    transform: rotate(0deg);
+    transition: transform var(--transition);
+}
+
+.lesson-group-toggle[aria-expanded="false"] .lesson-group-chevron {
+    transform: rotate(90deg);
+}
+
+.lesson-menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.lesson-menu-items[hidden] {
+    display: none;
+}
+
 .lesson-menu-item {
     position: relative;
 
