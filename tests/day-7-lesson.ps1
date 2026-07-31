@@ -53,8 +53,45 @@ $index = Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $root 'index.ht
     }
 }
 
-if ($day7 -match '\.mp3') {
-    throw 'day-7.html references audio that is not part of this change'
+$expectedAudio = @(
+    'audio/07/Words.mp3',
+    'audio/07/S01.mp3',
+    'audio/07/S02.mp3',
+    'audio/07/S03.mp3',
+    'audio/07/S04.mp3',
+    'audio/07/S05.mp3',
+    'audio/07/S06.mp3',
+    'audio/07/q01.mp3',
+    'audio/07/q02.mp3',
+    'audio/07/q03.mp3',
+    'audio/07/q04.mp3',
+    'audio/07/sp01.mp3'
+)
+
+$audioSources = [regex]::Matches(
+    $day7,
+    '<source\s+src="\./(?<src>audio/07/[^"]+\.mp3)"'
+)
+$actualAudio = @($audioSources | ForEach-Object { $_.Groups['src'].Value })
+
+if ($actualAudio.Count -ne $expectedAudio.Count) {
+    throw "day-7.html must reference exactly $($expectedAudio.Count) audio files"
+}
+
+$expectedAudio | ForEach-Object {
+    if ($_ -notin $actualAudio) {
+        throw "day-7.html is missing audio reference: $_"
+    }
+
+    $audioPath = Join-Path $root $_
+
+    if (-not (Test-Path -LiteralPath $audioPath)) {
+        throw "day-7.html references missing audio: $_"
+    }
+
+    if ((Get-Item -LiteralPath $audioPath).Length -eq 0) {
+        throw "day-7.html references empty audio: $_"
+    }
 }
 
 if (-not $index.Contains('data-lesson-id="7"')) {
