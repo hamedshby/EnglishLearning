@@ -4,10 +4,6 @@ const lessonGroupToggle = document.getElementById("lessonGroupToggle");
 const jobInterviewLessons = document.getElementById("jobInterviewLessons");
 const breadcrumbTitle = document.getElementById("breadcrumbTitle");
 
-const progressBar = document.getElementById("progressBar");
-const progressPercent = document.getElementById("progressPercent");
-const progressText = document.getElementById("progressText");
-
 const themeToggle = document.getElementById("themeToggle");
 
 const menuToggle = document.getElementById("menuToggle");
@@ -87,7 +83,7 @@ async function loadLesson(button, updateHistory = true) {
 
         setActiveMenuItem(button);
         initializeLessonActions();
-        updateProgress();
+        updateLessonCompletionStates();
 
         if (updateHistory) {
             updatePageUrl(lessonId);
@@ -237,7 +233,7 @@ function toggleLessonCompletion(lessonId) {
         );
     }
 
-    updateProgress();
+    updateLessonCompletionStates();
 }
 
 /**
@@ -260,9 +256,9 @@ function updateCompleteButton(button, isCompleted) {
 }
 
 /**
- * بروزرسانی درصد پیشرفت
+ * همگام‌سازی وضعیت تکمیل درس‌ها در منوی کناری
  */
-function updateProgress() {
+function updateLessonCompletionStates() {
     lessonButtons.forEach((button) => {
         const lessonId = Number(button.dataset.lessonId);
 
@@ -271,46 +267,6 @@ function updateProgress() {
             completedLessons.includes(lessonId)
         );
     });
-
-    const totalLessons = lessonButtons.length;
-
-    const validCompletedLessons =
-        completedLessons.filter((lessonId) => {
-            return findLessonButton(lessonId) !== null;
-        });
-
-    const completedCount =
-        validCompletedLessons.length;
-
-    const percentage =
-        totalLessons === 0
-            ? 0
-            : Math.round(
-                (completedCount / totalLessons) * 100
-            );
-
-    progressBar.style.width = `${percentage}%`;
-
-    progressPercent.textContent =
-        `${toPersianNumber(percentage)}٪`;
-
-    if (completedCount === 0) {
-        progressText.textContent =
-            "هنوز هیچ درسی تکمیل نشده است.";
-
-        return;
-    }
-
-    if (completedCount === totalLessons) {
-        progressText.textContent =
-            "تبریک! تمام درس‌های دوره را تکمیل کرده‌ای.";
-
-        return;
-    }
-
-    progressText.textContent =
-        `${toPersianNumber(completedCount)} درس از ` +
-        `${toPersianNumber(totalLessons)} درس تکمیل شده است.`;
 }
 
 /**
@@ -495,7 +451,7 @@ window.addEventListener("popstate", (event) => {
  */
 function initializeApp() {
     initializeTheme();
-    updateProgress();
+    updateLessonCompletionStates();
 
     const lessonIdFromUrl = getLessonIdFromUrl();
 

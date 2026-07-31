@@ -89,7 +89,7 @@ $script = Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $root 'script.
 
 $behaviorCheck = @'
 const fs = require('fs');
-const source = fs.readFileSync(process.argv[1], 'utf8');
+const source = fs.readFileSync(process.argv[1], 'utf8').replace(/\r\n/g, '\n');
 const functionSource = source.match(
     /function updateLessonCompletionStates\(\) \{[\s\S]*?\n\}\n\n\/\*\*/
 );
