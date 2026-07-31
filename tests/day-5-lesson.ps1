@@ -26,7 +26,22 @@ $index = Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $root 'index.ht
     if (-not $day5.Contains($_)) { throw "day-5.html is missing: $_" }
 }
 
-if ($day5 -match 'day-5.*\.mp3') { throw 'day-5.html references missing audio' }
+$audioSources = [regex]::Matches(
+    $day5,
+    '<source\s+src="(?<src>[^"]+\.mp3)"'
+)
+
+if ($audioSources.Count -eq 0) {
+    throw 'day-5.html has no audio sources'
+}
+
+$audioSources | ForEach-Object {
+    $relativePath = $_.Groups['src'].Value -replace '^\./', ''
+
+    if (-not (Test-Path -LiteralPath (Join-Path $root $relativePath))) {
+        throw "day-5.html references missing audio: $relativePath"
+    }
+}
 if (-not $index.Contains('data-lesson-id="5"')) { throw 'index.html has no day 5 menu item' }
 if (-not $day4.Contains('data-navigation-id="5"')) { throw 'day-4.html has no day 5 navigation' }
 
