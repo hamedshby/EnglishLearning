@@ -13,7 +13,7 @@ $index = Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $root 'index.ht
 
 @(
     '<section class="lesson-hero">',
-    'مدیریت مهلت تحویل و اولویت‌ها',
+    'Priorities &amp; Deadlines',
     '<div class="section-number">01</div>',
     '<div class="section-number">02</div>',
     '<div class="section-number">03</div>',
