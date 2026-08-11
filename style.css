@@ -775,6 +775,12 @@ a {
     background: var(--surface-secondary);
 }
 
+.restaurant-vocabulary-table th:last-child,
+.restaurant-vocabulary-table td:last-child {
+    direction: ltr;
+    text-align: left;
+}
+
 .english-word {
     direction: ltr;
 
@@ -884,6 +890,12 @@ a {
     text-align: right;
 }
 
+.quiz-question-box[dir="ltr"] .question-text {
+    direction: ltr;
+    font-family: Arial, sans-serif;
+    text-align: left;
+}
+
 .quiz-options {
     direction: ltr;
 
@@ -917,6 +929,12 @@ a {
 
 .answer-example p:last-child {
     margin-bottom: 0;
+}
+
+.answer-example.persian-translation {
+    direction: rtl;
+    font-family: inherit;
+    text-align: right;
 }
 
 .tip-box {

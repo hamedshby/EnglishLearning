@@ -1,7 +1,8 @@
 const lessonContent = document.getElementById("lessonContent");
 const lessonMenu = document.getElementById("lessonMenu");
-const lessonGroupToggle = document.getElementById("lessonGroupToggle");
-const jobInterviewLessons = document.getElementById("jobInterviewLessons");
+const lessonGroupToggles = [
+    ...document.querySelectorAll(".lesson-group-toggle")
+];
 const breadcrumbTitle = document.getElementById("breadcrumbTitle");
 
 const themeToggle = document.getElementById("themeToggle");
@@ -383,21 +384,32 @@ themeToggle.addEventListener("click", () => {
     );
 });
 
-function toggleLessonGroup() {
-    const isExpanded =
-        lessonGroupToggle.getAttribute("aria-expanded") === "true";
+function toggleLessonGroup(toggleButton) {
+    const controlledElementId =
+        toggleButton.getAttribute("aria-controls");
+    const controlledElement = document.getElementById(
+        controlledElementId
+    );
 
-    lessonGroupToggle.setAttribute(
+    if (!controlledElement) {
+        return;
+    }
+
+    const isExpanded =
+        toggleButton.getAttribute("aria-expanded") === "true";
+
+    toggleButton.setAttribute(
         "aria-expanded",
         String(!isExpanded)
     );
-    jobInterviewLessons.hidden = isExpanded;
+    controlledElement.hidden = isExpanded;
 }
 
-lessonGroupToggle.addEventListener(
-    "click",
-    toggleLessonGroup
-);
+lessonGroupToggles.forEach((toggleButton) => {
+    toggleButton.addEventListener("click", () => {
+        toggleLessonGroup(toggleButton);
+    });
+});
 
 lessonMenu.addEventListener("click", (event) => {
     const button = event.target.closest(
