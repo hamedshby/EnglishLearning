@@ -14,7 +14,7 @@ $chevron = [char]0x2304
 @(
     'id="lessonGroupToggle"',
     'class="lesson-group-toggle"',
-    'aria-expanded="true"',
+    'aria-expanded="false"',
     'aria-controls="jobInterviewLessons"',
     "<span class=`"lesson-group-title`">$groupTitle</span>",
     "<span class=`"lesson-group-chevron`" aria-hidden=`"true`">$chevron</span>",
@@ -51,11 +51,11 @@ $groupMarkup = $index.Substring($groupStart, $groupEnd - $groupStart)
 }
 
 @(
-    'const lessonGroupToggle = document.getElementById("lessonGroupToggle");',
-    'const jobInterviewLessons = document.getElementById("jobInterviewLessons");',
-    'function toggleLessonGroup()',
-    'lessonGroupToggle.setAttribute(',
-    'lessonGroupToggle.addEventListener('
+    'const lessonGroupToggles = [',
+    '...document.querySelectorAll(".lesson-group-toggle")',
+    'function toggleLessonGroup(toggleButton)',
+    'toggleButton.setAttribute(',
+    'lessonGroupToggles.forEach((toggleButton) => {'
 ) | ForEach-Object {
     if (-not $script.Contains($_)) {
         throw "script.js is missing the group behavior: $_"
@@ -65,14 +65,17 @@ $groupMarkup = $index.Substring($groupStart, $groupEnd - $groupStart)
 $behaviorCheck = @'
 const fs = require('fs');
 const source = fs.readFileSync(process.argv[1], 'utf8');
-const functionSource = source.match(/function toggleLessonGroup\(\) \{[\s\S]*?\n\}/);
+const functionSource = source.match(/function toggleLessonGroup\(toggleButton\) \{[\s\S]*?\n\}\n\nlessonGroupToggles/);
 
 if (!functionSource) {
     throw new Error('toggleLessonGroup function was not found');
 }
 
-const attributes = new Map([['aria-expanded', 'true']]);
-const lessonGroupToggle = {
+const attributes = new Map([
+    ['aria-expanded', 'true'],
+    ['aria-controls', 'jobInterviewLessons']
+]);
+const toggleButton = {
     getAttribute(name) {
         return attributes.get(name) ?? null;
     },
@@ -80,21 +83,25 @@ const lessonGroupToggle = {
         attributes.set(name, value);
     }
 };
-const jobInterviewLessons = { hidden: false };
+const controlledElement = { hidden: false };
+const document = {
+    getElementById(id) {
+        return id === 'jobInterviewLessons' ? controlledElement : null;
+    }
+};
 const createToggle = new Function(
-    'lessonGroupToggle',
-    'jobInterviewLessons',
-    `${functionSource[0]}; return toggleLessonGroup;`
+    'document',
+    `${functionSource[0].replace(/\nlessonGroupToggles$/, '')}; return toggleLessonGroup;`
 );
-const toggleLessonGroup = createToggle(lessonGroupToggle, jobInterviewLessons);
+const toggleLessonGroup = createToggle(document);
 
-toggleLessonGroup();
-if (attributes.get('aria-expanded') !== 'false' || jobInterviewLessons.hidden !== true) {
+toggleLessonGroup(toggleButton);
+if (attributes.get('aria-expanded') !== 'false' || controlledElement.hidden !== true) {
     throw new Error('collapsing must set aria-expanded=false and hidden=true');
 }
 
-toggleLessonGroup();
-if (attributes.get('aria-expanded') !== 'true' || jobInterviewLessons.hidden !== false) {
+toggleLessonGroup(toggleButton);
+if (attributes.get('aria-expanded') !== 'true' || controlledElement.hidden !== false) {
     throw new Error('expanding must set aria-expanded=true and hidden=false');
 }
 '@

@@ -923,6 +923,14 @@ a {
     margin-bottom: 0;
 }
 
+.word-tense-label {
+    display: block;
+    direction: ltr;
+    margin-bottom: 5px;
+    text-align: left;
+    color: var(--accent-primary);
+}
+
 .word-example-english {
     display: block;
     direction: ltr;

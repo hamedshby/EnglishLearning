@@ -83,6 +83,7 @@ async function loadLesson(button, updateHistory = true) {
         breadcrumbTitle.textContent = lessonTitle;
 
         setActiveMenuItem(button);
+        showActiveLessonGroup(button);
         initializeLessonActions();
         updateLessonCompletionStates();
 
@@ -267,6 +268,33 @@ function updateLessonCompletionStates() {
             "completed",
             completedLessons.includes(lessonId)
         );
+    });
+}
+
+/**
+ * فقط گروهی را باز نگه می‌دارد که درس فعال داخل آن قرار دارد.
+ */
+function showActiveLessonGroup(activeLessonButton) {
+    const activeGroup = activeLessonButton.closest(
+        ".lesson-menu-items"
+    );
+
+    lessonGroupToggles.forEach((toggleButton) => {
+        const controlledElement = document.getElementById(
+            toggleButton.getAttribute("aria-controls")
+        );
+
+        if (!controlledElement) {
+            return;
+        }
+
+        const isActiveGroup = controlledElement === activeGroup;
+
+        toggleButton.setAttribute(
+            "aria-expanded",
+            String(isActiveGroup)
+        );
+        controlledElement.hidden = !isActiveGroup;
     });
 }
 
