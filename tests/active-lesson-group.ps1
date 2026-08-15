@@ -31,8 +31,13 @@ $groupMenus = [regex]::Matches(
     '<div id="[^"]+" class="lesson-menu-items" hidden>'
 ).Count
 
-if ($groupMenus -ne 3) {
-    throw "All three lesson groups must start hidden; found $groupMenus"
+$groupToggles = [regex]::Matches(
+    $index,
+    'class="lesson-group-toggle"'
+).Count
+
+if ($groupMenus -ne $groupToggles) {
+    throw "Every lesson group must start hidden; found $groupMenus hidden menus for $groupToggles toggles"
 }
 
 Write-Output 'Active lesson group acceptance checks passed.'

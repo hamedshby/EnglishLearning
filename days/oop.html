@@ -1,0 +1,380 @@
+<section class="lesson-hero">
+    <div class="lesson-badge">
+        <span>🎙️</span>
+        پادکست دات‌نت
+    </div>
+
+    <h1>OOP in .NET — Why Do We Need Object-Oriented Programming?</h1>
+    <p>
+        آشنایی با برنامه‌نویسی شیءگرا، تفاوت کلاس و شیء، مزایای OOP و چهار اصل مهم آن در توسعه نرم‌افزار با C# و .NET
+    </p>
+</section>
+
+<section class="lesson-section">
+    <div class="section-header">
+        <div class="section-number">01</div>
+        <div class="section-title">
+            <h2>Podcast Transcript &amp; Translation</h2>
+            <p>متن پادکست همراه با ترجمه فارسی</p>
+        </div>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Hello.</p>
+            <p class="sentence-persian">سلام.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">In this episode, we’re going to talk about one of the most important concepts in
+                .NET development: <strong>Object-Oriented Programming</strong>, or simply <strong>OOP</strong>.</p>
+            <p class="sentence-persian">در این قسمت می‌خواهیم درباره یکی از مهم‌ترین مفاهیم توسعه با دات‌نت صحبت کنیم:
+                <strong>برنامه‌نویسی شیءگرا</strong> یا به‌اختصار <strong>OOP</strong>.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">If you work with C#, you probably use OOP every day, even if you don’t always
+                notice it.</p>
+            <p class="sentence-persian">اگر با C# کار می‌کنید، احتمالاً هر روز از OOP استفاده می‌کنید؛ حتی اگر همیشه
+                متوجه آن نباشید.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">So, what exactly is OOP?</p>
+            <p class="sentence-persian">پس OOP دقیقاً چیست؟</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">The main idea behind Object-Oriented Programming is to model software using
+                objects that represent real-world or business concepts.</p>
+            <p class="sentence-persian">ایده اصلی برنامه‌نویسی شیءگرا این است که نرم‌افزار را با استفاده از اشیایی
+                مدل‌سازی کنیم که نماینده مفاهیم دنیای واقعی یا کسب‌وکار هستند.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">For example, imagine we are building an e-commerce application.</p>
+            <p class="sentence-persian">برای مثال، تصور کنید در حال ساخت یک برنامه تجارت الکترونیک هستیم.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">We might have concepts such as <strong>Customer, Product, Order, and
+                    Payment</strong>.</p>
+            <p class="sentence-persian">ممکن است مفاهیمی مانند <strong>مشتری، محصول، سفارش و پرداخت</strong> داشته
+                باشیم.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">Each of these concepts has some data and some behavior.</p>
+            <p class="sentence-persian">هرکدام از این مفاهیم مقداری داده و تعدادی رفتار دارند.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">For example, a Product can have information such as a name, price, and stock
+                quantity. It can also have behaviors such as changing the price or reducing the stock.</p>
+            <p class="sentence-persian">برای مثال، یک محصول می‌تواند اطلاعاتی مانند نام، قیمت و تعداد موجودی داشته باشد.
+                همچنین می‌تواند رفتارهایی مانند تغییر قیمت یا کاهش موجودی داشته باشد.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">In OOP, we usually define these concepts using a <strong>class</strong>.</p>
+            <p class="sentence-persian">در OOP معمولاً این مفاهیم را با استفاده از یک <strong>کلاس</strong> تعریف
+                می‌کنیم.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">You can think of a class as a blueprint or a template.</p>
+            <p class="sentence-persian">می‌توانید کلاس را مانند یک نقشه اولیه یا الگو در نظر بگیرید.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">For example, we can create a class called <code>Product</code> that describes
+                what information and behavior every product should have.</p>
+            <p class="sentence-persian">برای مثال، می‌توانیم کلاسی به نام <code>Product</code> ایجاد کنیم که مشخص می‌کند
+                هر محصول باید چه اطلاعات و رفتارهایی داشته باشد.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">But the class itself is not an actual product.</p>
+            <p class="sentence-persian">اما خود کلاس یک محصول واقعی نیست.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">When we create an instance of that class using the <code>new</code> keyword, we
+                create an <strong>object</strong>, also called an <strong>instance</strong>.</p>
+            <p class="sentence-persian">وقتی با استفاده از کلمه کلیدی <code>new</code> نمونه‌ای از آن کلاس می‌سازیم، یک
+                <strong>شیء</strong> ایجاد می‌کنیم که به آن <strong>نمونه</strong> نیز گفته می‌شود.</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">var laptop = new Product();</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Here, <code>Product</code> is the class, and <code>laptop</code> is an object
+                created from that class.</p>
+            <p class="sentence-persian">اینجا <code>Product</code> کلاس است و <code>laptop</code> شیئی است که از آن کلاس
+                ساخته شده است.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">One of the main benefits of OOP is that it helps us organize our code in a
+                cleaner and more maintainable way.</p>
+            <p class="sentence-persian">یکی از مزایای اصلی OOP این است که کمک می‌کند کد خود را به‌شکلی تمیزتر و
+                نگهداری‌پذیرتر سازمان‌دهی کنیم.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">In real-world applications, especially large .NET projects, putting all the
+                business logic into a few large methods or files quickly makes the code difficult to understand, change,
+                and test.</p>
+            <p class="sentence-persian">در برنامه‌های واقعی، به‌ویژه پروژه‌های بزرگ دات‌نت، قرار دادن تمام منطق کسب‌وکار
+                در چند متد یا فایل بزرگ خیلی زود فهمیدن، تغییر دادن و آزمایش کد را دشوار می‌کند.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">OOP helps us divide responsibilities between different classes.</p>
+            <p class="sentence-persian">OOP کمک می‌کند مسئولیت‌ها را میان کلاس‌های مختلف تقسیم کنیم.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">There are also four important concepts in Object-Oriented Programming:
+                <strong>Encapsulation, Inheritance, Polymorphism, and Abstraction.</strong></p>
+            <p class="sentence-persian">در برنامه‌نویسی شیءگرا چهار مفهوم مهم نیز وجود دارد: <strong>کپسوله‌سازی، وراثت،
+                    چندریختی و انتزاع.</strong></p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">Encapsulation means keeping related data and behavior together and controlling
+                access to internal details.</p>
+            <p class="sentence-persian">کپسوله‌سازی یعنی داده‌ها و رفتارهای مرتبط را کنار هم نگه داریم و دسترسی به
+                جزئیات داخلی را کنترل کنیم.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">Inheritance allows one class to reuse or extend the behavior of another class.
+            </p>
+            <p class="sentence-persian">وراثت به یک کلاس اجازه می‌دهد رفتار کلاس دیگری را دوباره استفاده کند یا گسترش
+                دهد.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">Polymorphism means that the same operation can have different implementations
+                depending on the object.</p>
+            <p class="sentence-persian">چندریختی یعنی یک عملیات یکسان می‌تواند بسته به شیء، پیاده‌سازی‌های متفاوتی داشته
+                باشد.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">And Abstraction means hiding unnecessary implementation details and exposing
+                only what the consumer really needs.</p>
+            <p class="sentence-persian">انتزاع نیز یعنی جزئیات غیرضروری پیاده‌سازی را پنهان کنیم و فقط آنچه مصرف‌کننده
+                واقعاً نیاز دارد در اختیارش بگذاریم.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">These concepts are not just theoretical ideas.</p>
+            <p class="sentence-persian">این مفاهیم فقط ایده‌هایی نظری نیستند.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">When you work with <strong>ASP.NET Core, Dependency Injection, Entity Framework,
+                    Design Patterns, or Software Architecture</strong>, you use these OOP concepts all the time.</p>
+            <p class="sentence-persian">هنگام کار با <strong>ASP.NET Core، تزریق وابستگی، Entity Framework، الگوهای
+                    طراحی یا معماری نرم‌افزار</strong> همواره از این مفاهیم OOP استفاده می‌کنید.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">So, if we want to summarize OOP in one sentence:</p>
+            <p class="sentence-persian">پس اگر بخواهیم OOP را در یک جمله خلاصه کنیم:</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english"><strong>Object-Oriented Programming is a way of designing software by organizing
+                    a system into objects that have their own state and behavior.</strong></p>
+            <p class="sentence-persian"><strong>برنامه‌نویسی شیءگرا روشی برای طراحی نرم‌افزار است که در آن یک سیستم را
+                    به اشیایی با وضعیت و رفتار مخصوص خودشان سازمان‌دهی می‌کنیم.</strong></p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">In the next episodes, we can look more closely at concepts like <strong>Class,
+                    Object, Property, Field, and Method</strong>, and then move on to the four main principles of OOP.
+            </p>
+            <p class="sentence-persian">در قسمت‌های بعدی می‌توانیم مفاهیمی مانند <strong>کلاس، شیء، ویژگی، فیلد و
+                    متد</strong> را دقیق‌تر بررسی کنیم و سپس به سراغ چهار اصل اصلی OOP برویم.</p>
+        </div>
+
+        <div class="sentence-card">
+            <p class="sentence-english">If you want to become a strong C# and .NET developer, having a solid
+                understanding of OOP is one of the most important foundations.</p>
+            <p class="sentence-persian">اگر می‌خواهید به توسعه‌دهنده‌ای توانمند در C# و دات‌نت تبدیل شوید، داشتن درکی
+                عمیق و محکم از OOP یکی از مهم‌ترین پایه‌هاست.</p>
+        </div>
+    </div>
+    <div class="lesson-audio">
+        <audio controls loop preload="none">
+            <source src="./audio/CPodcast/oop.mp3" type="audio/mpeg">
+            مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
+        </audio>
+    </div>
+</section>
+
+<section class="lesson-section">
+    <div class="section-header">
+        <div class="section-number">02</div>
+        <div class="section-title">
+            <h2>Difficult &amp; Unfamiliar Words</h2>
+            <p>معنی کلمات و عبارت‌های دشوار یا ناآشنا</p>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="vocabulary-table dotnet-vocabulary-table">
+            <thead>
+                <tr>
+                    <th>واژه یا عبارت</th>
+                    <th>معنی فارسی</th>
+                    <th>کاربرد در متن</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">concept</td>
+                    <td>مفهوم</td>
+                    <td dir="ltr">one of the most important concepts</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Object-Oriented Programming</td>
+                    <td>برنامه‌نویسی شیءگرا</td>
+                    <td>شیوه‌ای برای طراحی نرم‌افزار بر پایه اشیا</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">model (verb)</td>
+                    <td>مدل‌سازی کردن</td>
+                    <td dir="ltr">to model software using objects</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">represent</td>
+                    <td>نمایانگر بودن، نمایندگی کردن</td>
+                    <td dir="ltr">objects that represent business concepts</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">e-commerce</td>
+                    <td>تجارت الکترونیک</td>
+                    <td dir="ltr">an e-commerce application</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">behavior</td>
+                    <td>رفتار، عملکرد</td>
+                    <td>کاری که یک شیء می‌تواند انجام دهد</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">stock quantity</td>
+                    <td>تعداد موجودی انبار</td>
+                    <td dir="ltr">price and stock quantity</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">blueprint</td>
+                    <td>نقشه اولیه، طرح کلی</td>
+                    <td>تشبیهی برای تعریف کلاس</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">template</td>
+                    <td>الگو، قالب</td>
+                    <td dir="ltr">a blueprint or a template</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">instance</td>
+                    <td>نمونه ساخته‌شده از کلاس</td>
+                    <td dir="ltr">an instance of that class</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">keyword</td>
+                    <td>کلمه کلیدی</td>
+                    <td dir="ltr">the new keyword</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">maintainable</td>
+                    <td>نگهداری‌پذیر</td>
+                    <td dir="ltr">cleaner and more maintainable</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">business logic</td>
+                    <td>منطق کسب‌وکار</td>
+                    <td>قواعد و فرایندهای اصلی یک سامانه</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">responsibility</td>
+                    <td>مسئولیت</td>
+                    <td dir="ltr">divide responsibilities</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Encapsulation</td>
+                    <td>کپسوله‌سازی</td>
+                    <td>کنار هم نگه داشتن داده و رفتار و کنترل دسترسی</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Inheritance</td>
+                    <td>وراثت</td>
+                    <td>استفاده یا گسترش رفتار یک کلاس توسط کلاس دیگر</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Polymorphism</td>
+                    <td>چندریختی</td>
+                    <td>داشتن پیاده‌سازی‌های متفاوت برای یک عملیات</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Abstraction</td>
+                    <td>انتزاع</td>
+                    <td>پنهان‌کردن جزئیات غیرضروری پیاده‌سازی</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">implementation</td>
+                    <td>پیاده‌سازی</td>
+                    <td dir="ltr">implementation details</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">consumer</td>
+                    <td>مصرف‌کننده، استفاده‌کننده کد</td>
+                    <td dir="ltr">what the consumer really needs</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">theoretical</td>
+                    <td>نظری، تئوریک</td>
+                    <td dir="ltr">theoretical ideas</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Dependency Injection</td>
+                    <td>تزریق وابستگی</td>
+                    <td>روشی برای تأمین وابستگی‌های یک کلاس از بیرون</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">summarize</td>
+                    <td>خلاصه کردن</td>
+                    <td dir="ltr">summarize OOP in one sentence</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">state</td>
+                    <td>وضعیت</td>
+                    <td>داده‌ها و شرایط فعلی یک شیء</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">solid understanding</td>
+                    <td>درک عمیق و محکم</td>
+                    <td dir="ltr">a solid understanding of OOP</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">foundation</td>
+                    <td>پایه، بنیان</td>
+                    <td dir="ltr">one of the most important foundations</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<button id="completeLessonButton" class="complete-lesson-button" type="button">
+    <span>○</span>
+    علامت‌گذاری درس به‌عنوان تکمیل‌شده
+</button>
