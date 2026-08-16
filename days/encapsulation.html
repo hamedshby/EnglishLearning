@@ -1,0 +1,395 @@
+<section class="lesson-hero">
+    <div class="lesson-badge">
+        <span>🎙️</span>
+        پادکست دات‌نت
+    </div>
+
+    <h1>Encapsulation in .NET</h1>
+    <p>
+        آشنایی با Encapsulation، کنترل دسترسی به state داخلی object و پیاده‌سازی business ruleها در C# و .NET
+    </p>
+</section>
+
+<section class="lesson-section">
+    <div class="section-header">
+        <div class="section-number">01</div>
+        <div class="section-title">
+            <h2>Podcast Transcript &amp; Translation</h2>
+            <p>متن پادکست همراه با ترجمه فارسی</p>
+        </div>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Hello.</p>
+            <p class="sentence-persian">سلام.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In this episode, we’re going to talk about one of the four main principles of
+                Object-Oriented Programming: <strong>Encapsulation</strong>.</p>
+            <p class="sentence-persian">در این قسمت می‌خواهیم درباره یکی از چهار اصل اصلی Object-Oriented Programming
+                صحبت کنیم: <strong>Encapsulation</strong>.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Encapsulation is a very important concept in C# and .NET because it helps us
+                protect the internal state of our objects and control how other parts of the application interact with
+                them.</p>
+            <p class="sentence-persian">Encapsulation مفهومی بسیار مهم در C# و .NET است، زیرا کمک می‌کند state داخلی
+                objectهای خود را محافظت و نحوه تعامل بخش‌های دیگر برنامه با آن‌ها را کنترل کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">So, what exactly is Encapsulation?</p>
+            <p class="sentence-persian">پس Encapsulation دقیقاً چیست؟</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In simple terms, <strong>Encapsulation means keeping data and behavior together
+                    inside a class and controlling access to that data.</strong></p>
+            <p class="sentence-persian">به زبان ساده، <strong>Encapsulation یعنی داده و behavior را درون یک class کنار
+                    هم نگه داریم و دسترسی به آن داده را کنترل کنیم.</strong></p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Let’s look at a simple example.</p>
+            <p class="sentence-persian">بیایید یک مثال ساده را بررسی کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Imagine we have a <code>BankAccount</code> class.</p>
+            <p class="sentence-persian">تصور کنید یک class به نام <code>BankAccount</code> داریم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">A bank account has a balance.</p>
+            <p class="sentence-persian">یک حساب بانکی دارای balance است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">A simple implementation might look like this:</p>
+            <p class="sentence-persian">یک implementation ساده می‌تواند به این شکل باشد:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class BankAccount
+{
+    public decimal Balance { get; set; }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">At first, this looks completely fine.</p>
+            <p class="sentence-persian">در نگاه اول، این کد کاملاً مناسب به نظر می‌رسد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">But there is a problem.</p>
+            <p class="sentence-persian">اما یک مشکل وجود دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Because the <code>Balance</code> property has a public setter, any part of the
+                application can change it directly.</p>
+            <p class="sentence-persian">چون property به نام <code>Balance</code> یک setter از نوع <code>public</code>
+                دارد، هر بخشی از برنامه می‌تواند مقدار آن را مستقیماً تغییر دهد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example:</p>
+            <p class="sentence-persian">برای مثال:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">account.Balance = -5000;</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Now we have a negative balance, even though our business rules may not allow
+                this.</p>
+            <p class="sentence-persian">اکنون یک balance منفی داریم، با اینکه ممکن است business ruleهای ما چنین وضعیتی
+                را مجاز ندانند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">This is where Encapsulation becomes useful.</p>
+            <p class="sentence-persian">اینجاست که Encapsulation مفید واقع می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Instead of allowing everyone to change the balance directly, we can protect it.
+            </p>
+            <p class="sentence-persian">به‌جای اینکه به همه اجازه دهیم balance را مستقیماً تغییر دهند، می‌توانیم از آن
+                محافظت کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example:</p>
+            <p class="sentence-persian">برای مثال:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class BankAccount
+{
+    public decimal Balance { get; private set; }
+
+    public void Deposit(decimal amount)
+    {
+        if (amount &lt;= 0)
+            throw new ArgumentException("Amount must be positive.");
+
+        Balance += amount;
+    }
+
+    public void Withdraw(decimal amount)
+    {
+        if (amount &lt;= 0)
+            throw new ArgumentException("Amount must be positive.");
+
+        if (amount &gt; Balance)
+            throw new InvalidOperationException("Insufficient balance.");
+
+        Balance -= amount;
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Now, other parts of the application can read the balance, but they cannot change
+                it directly.</p>
+            <p class="sentence-persian">اکنون بخش‌های دیگر برنامه می‌توانند balance را بخوانند، اما نمی‌توانند آن را
+                مستقیماً تغییر دهند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The only way to modify the balance is through the <code>Deposit</code> or
+                <code>Withdraw</code> methods.
+            </p>
+            <p class="sentence-persian">تنها راه تغییر balance، استفاده از methodهای <code>Deposit</code> یا
+                <code>Withdraw</code> است.
+            </p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">And those methods contain the business rules that protect the object from
+                invalid states.</p>
+            <p class="sentence-persian">این methodها business ruleهایی را در خود دارند که object را در برابر stateهای
+                نامعتبر محافظت می‌کنند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">This is the main idea behind Encapsulation.</p>
+            <p class="sentence-persian">این ایده اصلی Encapsulation است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Instead of exposing the internal state of an object, we expose controlled
+                operations.</p>
+            <p class="sentence-persian">به‌جای آشکار کردن state داخلی یک object، operationهای کنترل‌شده را در اختیار
+                دیگران قرار می‌دهیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In C#, Encapsulation is commonly implemented using <strong>access
+                    modifiers</strong> such as <code>private</code>, <code>public</code>, <code>protected</code>, and
+                <code>internal</code>.
+            </p>
+            <p class="sentence-persian">در C#، Encapsulation معمولاً با استفاده از <strong>access modifier</strong>هایی
+                مانند <code>private</code>، <code>public</code>، <code>protected</code> و <code>internal</code>
+                پیاده‌سازی می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example, a <code>private</code> field or method can only be accessed from
+                inside its own class.</p>
+            <p class="sentence-persian">برای مثال، یک field یا method از نوع <code>private</code> فقط از داخل class خودش
+                قابل دسترسی است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">A <code>public</code> member can be accessed from anywhere.</p>
+            <p class="sentence-persian">یک member از نوع <code>public</code> از همه‌جا قابل دسترسی است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">And a property with a <code>private set</code> allows other classes to read its
+                value but prevents them from changing it directly.</p>
+            <p class="sentence-persian">همچنین property دارای <code>private set</code> به classهای دیگر اجازه می‌دهد
+                مقدارش را بخوانند، اما از تغییر مستقیم آن جلوگیری می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Encapsulation gives us several important benefits.</p>
+            <p class="sentence-persian">Encapsulation چند مزیت مهم در اختیار ما قرار می‌دهد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">First, it protects the internal state of an object.</p>
+            <p class="sentence-persian">اول، از state داخلی یک object محافظت می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Second, it keeps business rules in one place.</p>
+            <p class="sentence-persian">دوم، business ruleها را در یک محل نگه می‌دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Third, it reduces dependencies between different parts of the application.</p>
+            <p class="sentence-persian">سوم، dependency میان بخش‌های مختلف برنامه را کاهش می‌دهد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">And finally, it makes our code easier to maintain and change.</p>
+            <p class="sentence-persian">و در نهایت، نگهداری و تغییر کد را آسان‌تر می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example, if we later change how the balance is calculated, other parts of
+                the application do not need to know about that implementation detail.</p>
+            <p class="sentence-persian">برای مثال، اگر بعداً روش محاسبه balance را تغییر دهیم، بخش‌های دیگر برنامه نیازی
+                ندارند از آن implementation detail باخبر باشند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">They only need to use methods like <code>Deposit</code> and
+                <code>Withdraw</code>.
+            </p>
+            <p class="sentence-persian">آن‌ها فقط باید از methodهایی مانند <code>Deposit</code> و <code>Withdraw</code>
+                استفاده کنند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">So, if we want to summarize Encapsulation in one sentence:</p>
+            <p class="sentence-persian">پس اگر بخواهیم Encapsulation را در یک جمله خلاصه کنیم:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english"><strong>Encapsulation means protecting the internal state of an object and
+                    allowing access to it only through controlled operations.</strong></p>
+            <p class="sentence-persian"><strong>Encapsulation یعنی از state داخلی یک object محافظت کنیم و دسترسی به آن
+                    را فقط از طریق operationهای کنترل‌شده امکان‌پذیر سازیم.</strong></p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In real .NET applications, especially when working with <strong>Domain-Driven
+                    Design, Clean Architecture, and rich domain models</strong>, Encapsulation is extremely important.
+            </p>
+            <p class="sentence-persian">در برنامه‌های واقعی .NET، به‌ویژه هنگام کار با <strong>Domain-Driven Design،
+                    Clean Architecture و rich domain model</strong>، Encapsulation اهمیت بسیار زیادی دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">A well-designed class should not just store data.</p>
+            <p class="sentence-persian">یک class با طراحی مناسب نباید فقط داده ذخیره کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">It should also protect its own rules and make it difficult to create an invalid
+                state.</p>
+            <p class="sentence-persian">بلکه باید از ruleهای خودش نیز محافظت کند و ساختن یک state نامعتبر را دشوار سازد.
+            </p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">And that is the real power of Encapsulation in Object-Oriented Programming.</p>
+            <p class="sentence-persian">و این قدرت واقعی Encapsulation در Object-Oriented Programming است.</p>
+        </div>
+    </div>
+    <div class="lesson-audio">
+        <audio controls loop preload="none">
+            <source src="./audio/CPodcast/Encapsulation.mp3" type="audio/mpeg">
+            مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
+        </audio>
+    </div>
+</section>
+
+<section class="lesson-section">
+    <div class="section-header">
+        <div class="section-number">02</div>
+        <div class="section-title">
+            <h2>Difficult &amp; Unfamiliar Words</h2>
+            <p>معنی کلمات و عبارت‌های دشوار یا ناآشنا</p>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="vocabulary-table dotnet-vocabulary-table">
+            <thead>
+                <tr>
+                    <th>واژه یا عبارت</th>
+                    <th>معنی فارسی</th>
+                    <th>کاربرد در متن</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Encapsulation</td>
+                    <td>کنترل دسترسی به state و behavior داخلی object</td>
+                    <td dir="ltr">one of the four main principles</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">internal state</td>
+                    <td>state داخلی</td>
+                    <td>مقادیر فعلی نگهداری‌شده در یک object</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">interact</td>
+                    <td>تعامل داشتن</td>
+                    <td dir="ltr">interact with them</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">behavior</td>
+                    <td>behavior، عملکرد</td>
+                    <td>کاری که یک object انجام می‌دهد</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">implementation</td>
+                    <td>implementation، پیاده‌سازی</td>
+                    <td dir="ltr">a simple implementation</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">setter</td>
+                    <td>بخش تنظیم‌کننده مقدار property</td>
+                    <td dir="ltr">a public setter</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">business rule</td>
+                    <td>قاعده کسب‌وکار</td>
+                    <td>قانونی که معتبر بودن رفتار یا state را تعیین می‌کند</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">invalid state</td>
+                    <td>state نامعتبر</td>
+                    <td>وضعیتی که ruleهای object را نقض می‌کند</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">modify</td>
+                    <td>تغییر دادن</td>
+                    <td dir="ltr">modify the balance</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">expose</td>
+                    <td>در معرض دسترسی قرار دادن</td>
+                    <td dir="ltr">expose controlled operations</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">access modifier</td>
+                    <td>تعیین‌کننده سطح دسترسی member</td>
+                    <td><code>private</code>، <code>public</code>، <code>protected</code> و <code>internal</code></td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">member</td>
+                    <td>member یک class</td>
+                    <td>field، property یا method متعلق به class</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">prevent</td>
+                    <td>جلوگیری کردن</td>
+                    <td dir="ltr">prevents them from changing it</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">dependency</td>
+                    <td>dependency، وابستگی</td>
+                    <td>ارتباطی که یک بخش کد به بخش دیگر دارد</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">maintain</td>
+                    <td>نگهداری کردن</td>
+                    <td dir="ltr">easier to maintain</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">implementation detail</td>
+                    <td>جزئیات داخلی implementation</td>
+                    <td>جزئیاتی که مصرف‌کننده یک class نباید به آن وابسته باشد</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">controlled operation</td>
+                    <td>operation کنترل‌شده</td>
+                    <td>methodی که ruleها را پیش از تغییر state اعمال می‌کند</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">rich domain model</td>
+                    <td>domain model دارای data و behavior</td>
+                    <td>مدلی که از ruleهای خودش محافظت می‌کند</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<button id="completeLessonButton" class="complete-lesson-button" type="button">
+    <span>○</span>
+    علامت‌گذاری درس به‌عنوان تکمیل‌شده
+</button>
