@@ -1,0 +1,372 @@
+<section class="lesson-hero">
+    <div class="lesson-badge">
+        <span>🎙️</span>
+        پادکست دات‌نت
+    </div>
+
+    <h1>Inheritance in .NET</h1>
+    <p>
+        آشنایی با Inheritance، بازاستفاده و گسترش behavior یک base class و تشخیص رابطه is-a در C# و .NET
+    </p>
+</section>
+
+<section class="lesson-section">
+    <div class="section-header">
+        <div class="section-number">01</div>
+        <div class="section-title">
+            <h2>Podcast Transcript &amp; Translation</h2>
+            <p>متن پادکست همراه با ترجمه فارسی</p>
+        </div>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Hello.</p>
+            <p class="sentence-persian">سلام.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In this episode, we’re going to talk about another important principle of Object-Oriented Programming: <strong>Inheritance</strong>.</p>
+            <p class="sentence-persian">در این قسمت می‌خواهیم درباره یکی دیگر از اصول مهم Object-Oriented Programming صحبت کنیم: <strong>Inheritance</strong>.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Inheritance allows us to create a new class based on an existing class.</p>
+            <p class="sentence-persian">Inheritance به ما اجازه می‌دهد بر پایه یک class موجود، class جدیدی بسازیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The new class can reuse the fields, properties, and methods of the existing class, and it can also add new behavior or change existing behavior.</p>
+            <p class="sentence-persian">class جدید می‌تواند field، property و methodهای class موجود را دوباره به کار بگیرد؛ همچنین می‌تواند behavior جدیدی اضافه کند یا behavior موجود را تغییر دهد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Let’s look at a simple example.</p>
+            <p class="sentence-persian">بیایید یک مثال ساده را بررسی کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Imagine we are building an application that has different types of employees.</p>
+            <p class="sentence-persian">تصور کنید در حال ساخت applicationی هستیم که انواع مختلفی از employee دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">We can start with a base class called <code>Employee</code>:</p>
+            <p class="sentence-persian">می‌توانیم با یک base class به نام <code>Employee</code> شروع کنیم:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class Employee
+{
+    public string Name { get; set; }
+
+    public void Work()
+    {
+        Console.WriteLine("Employee is working.");
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Now suppose we have a developer.</p>
+            <p class="sentence-persian">حالا فرض کنید یک developer داریم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">A developer is also an employee, so instead of repeating the same properties and methods, we can inherit from the <code>Employee</code> class:</p>
+            <p class="sentence-persian">یک developer نیز employee است؛ پس به‌جای تکرار propertyها و methodهای یکسان، می‌توانیم از class <code>Employee</code> ارث‌بری کنیم:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class Developer : Employee
+{
+    public string ProgrammingLanguage { get; set; }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Now the <code>Developer</code> class automatically has access to the <code>Name</code> property and the <code>Work</code> method.</p>
+            <p class="sentence-persian">اکنون class <code>Developer</code> به‌طور خودکار به property <code>Name</code> و method <code>Work</code> دسترسی دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example:</p>
+            <p class="sentence-persian">برای مثال:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">var developer = new Developer();
+
+developer.Name = "John";
+developer.ProgrammingLanguage = "C#";
+
+developer.Work();</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">This is one of the main benefits of inheritance: <strong>code reuse</strong>.</p>
+            <p class="sentence-persian">این یکی از مزیت‌های اصلی Inheritance است: <strong>code reuse</strong>.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">We can put common behavior in a base class and reuse it in multiple derived classes.</p>
+            <p class="sentence-persian">می‌توانیم behavior مشترک را در یک base class قرار دهیم و آن را در چند derived class دوباره به کار بگیریم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example, we might also have:</p>
+            <p class="sentence-persian">برای مثال، ممکن است این class را نیز داشته باشیم:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class Manager : Employee
+{
+    public int TeamSize { get; set; }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Both <code>Developer</code> and <code>Manager</code> inherit the common behavior from <code>Employee</code>.</p>
+            <p class="sentence-persian">هر دو class <code>Developer</code> و <code>Manager</code>، behavior مشترک را از <code>Employee</code> به ارث می‌برند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In inheritance, we usually use two important terms:</p>
+            <p class="sentence-persian">در Inheritance معمولاً از دو اصطلاح مهم استفاده می‌کنیم:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The original class is called the <strong>base class</strong> or <strong>parent class</strong>.</p>
+            <p class="sentence-persian">class اصلی <strong>base class</strong> یا <strong>parent class</strong> نامیده می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">And the class that inherits from it is called the <strong>derived class</strong> or <strong>child class</strong>.</p>
+            <p class="sentence-persian">و classی که از آن ارث‌بری می‌کند، <strong>derived class</strong> یا <strong>child class</strong> نامیده می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In C#, inheritance is defined using a colon.</p>
+            <p class="sentence-persian">در C#، Inheritance با استفاده از colon تعریف می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example:</p>
+            <p class="sentence-persian">برای مثال:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class Developer : Employee</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Another important feature of inheritance is the ability to change behavior in a derived class.</p>
+            <p class="sentence-persian">ویژگی مهم دیگر Inheritance، امکان تغییر behavior در یک derived class است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example, the base class can define a <code>virtual</code> method:</p>
+            <p class="sentence-persian">برای مثال، base class می‌تواند یک method از نوع <code>virtual</code> تعریف کند:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class Employee
+{
+    public virtual void Work()
+    {
+        Console.WriteLine("Employee is working.");
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Then the derived class can override it:</p>
+            <p class="sentence-persian">سپس derived class می‌تواند آن را override کند:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class Developer : Employee
+{
+    public override void Work()
+    {
+        Console.WriteLine("Developer is writing code.");
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Now the <code>Developer</code> class has its own implementation of the <code>Work</code> method.</p>
+            <p class="sentence-persian">اکنون class <code>Developer</code>، implementation خودش از method <code>Work</code> را دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">This is also closely related to another OOP principle called <strong>Polymorphism</strong>.</p>
+            <p class="sentence-persian">این ویژگی با اصل دیگری از OOP به نام <strong>Polymorphism</strong> نیز ارتباط نزدیکی دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">However, inheritance should be used carefully.</p>
+            <p class="sentence-persian">با این حال، Inheritance باید با دقت استفاده شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Just because two classes share some properties does not always mean that one should inherit from the other.</p>
+            <p class="sentence-persian">صرفاً اینکه دو class چند property مشترک دارند، همیشه به این معنا نیست که یکی باید از دیگری ارث‌بری کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">A good inheritance relationship usually represents an <strong>is-a relationship</strong>.</p>
+            <p class="sentence-persian">یک رابطه Inheritance مناسب، معمولاً نشان‌دهنده یک <strong>is-a relationship</strong> است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example: A Developer <strong>is an</strong> Employee. A Manager <strong>is an</strong> Employee.</p>
+            <p class="sentence-persian">برای مثال: Developer یک Employee است. Manager نیز یک Employee است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">But a Car is not an Engine. A Car <strong>has an</strong> Engine.</p>
+            <p class="sentence-persian">اما Car یک Engine نیست؛ Car یک Engine دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In that case, composition is usually a better choice than inheritance.</p>
+            <p class="sentence-persian">در چنین حالتی، Composition معمولاً انتخاب بهتری از Inheritance است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">This distinction is very important in real-world software design.</p>
+            <p class="sentence-persian">این تمایز در software design دنیای واقعی بسیار مهم است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">So, if we want to summarize inheritance in one sentence:</p>
+            <p class="sentence-persian">پس اگر بخواهیم Inheritance را در یک جمله خلاصه کنیم:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english"><strong>Inheritance allows a class to reuse and extend the behavior of another class.</strong></p>
+            <p class="sentence-persian"><strong>Inheritance به یک class اجازه می‌دهد behavior یک class دیگر را دوباره به کار بگیرد و گسترش دهد.</strong></p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In .NET development, inheritance is widely used in frameworks, libraries, domain models, exception classes, ASP.NET Core controllers, and many other areas.</p>
+            <p class="sentence-persian">در .NET development، Inheritance در frameworkها، libraryها، domain modelها، exception classها، controllerهای ASP.NET Core و بسیاری حوزه‌های دیگر کاربرد گسترده‌ای دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">But good developers do not use inheritance just to avoid duplicate code.</p>
+            <p class="sentence-persian">اما developerهای خوب، Inheritance را فقط برای جلوگیری از duplicate code به کار نمی‌برند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">They use it when there is a clear relationship between the base class and the derived class.</p>
+            <p class="sentence-persian">آن‌ها زمانی از آن استفاده می‌کنند که میان base class و derived class رابطه‌ای روشن وجود داشته باشد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Understanding when to use inheritance — and when not to use it — is an important part of writing clean and maintainable object-oriented code.</p>
+            <p class="sentence-persian">درک اینکه چه زمانی از Inheritance استفاده کنیم و چه زمانی از آن استفاده نکنیم، بخش مهمی از نوشتن object-oriented code تمیز و قابل‌نگهداری است.</p>
+        </div>
+    </div>
+
+    <div class="lesson-audio">
+        <audio controls loop preload="none">
+            <source src="./audio/CPodcast/Inheritance.mp3" type="audio/mpeg">
+            مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
+        </audio>
+    </div>
+</section>
+
+<section class="lesson-section">
+    <div class="section-header">
+        <div class="section-number">02</div>
+        <div class="section-title">
+            <h2>Difficult &amp; Unfamiliar Words</h2>
+            <p>معنی کلمات و عبارت‌های دشوار یا ناآشنا</p>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="vocabulary-table dotnet-vocabulary-table">
+            <thead>
+                <tr>
+                    <th>واژه یا عبارت</th>
+                    <th>معنی فارسی</th>
+                    <th>کاربرد در متن</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Inheritance</td>
+                    <td>امکان بازاستفاده و گسترش behavior یک class</td>
+                    <td dir="ltr">an important principle of OOP</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">existing</td>
+                    <td>موجود</td>
+                    <td dir="ltr">an existing class</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">reuse</td>
+                    <td>دوباره به کار بردن</td>
+                    <td dir="ltr">reuse the fields, properties, and methods</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">extend</td>
+                    <td>گسترش دادن</td>
+                    <td dir="ltr">reuse and extend the behavior</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">behavior</td>
+                    <td>behavior، عملکرد</td>
+                    <td>کاری که یک object انجام می‌دهد</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">code reuse</td>
+                    <td>بازاستفاده از کد</td>
+                    <td>به‌کارگیری کد مشترک بدون تکرار آن</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">base class</td>
+                    <td>class پایه</td>
+                    <td>classی که memberهایش به ارث می‌رسند</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">derived class</td>
+                    <td>class مشتق‌شده</td>
+                    <td>classی که از base class ارث‌بری می‌کند</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">colon</td>
+                    <td>نشانه دونقطه</td>
+                    <td><code>Developer : Employee</code></td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">virtual</td>
+                    <td>keywordی برای قابل override کردن یک member</td>
+                    <td><code>public virtual void Work()</code></td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">override</td>
+                    <td>ارائه implementation جدید برای member ارث‌برده‌شده</td>
+                    <td><code>public override void Work()</code></td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">implementation</td>
+                    <td>implementation، پیاده‌سازی</td>
+                    <td dir="ltr">its own implementation</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">is-a relationship</td>
+                    <td>رابطه «یک نوع از آن است»</td>
+                    <td dir="ltr">A Developer is an Employee</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">composition</td>
+                    <td>ساختن یک object با قرار دادن objectهای دیگر در آن</td>
+                    <td dir="ltr">A Car has an Engine</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">distinction</td>
+                    <td>تمایز، تفاوت</td>
+                    <td dir="ltr">This distinction is very important</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">maintainable</td>
+                    <td>قابل‌نگهداری</td>
+                    <td dir="ltr">clean and maintainable code</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<button id="completeLessonButton" class="complete-lesson-button" type="button">
+    <span>○</span>
+    علامت‌گذاری درس به‌عنوان تکمیل‌شده
+</button>
