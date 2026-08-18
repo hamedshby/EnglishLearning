@@ -1,0 +1,439 @@
+<section class="lesson-hero">
+    <div class="lesson-badge">
+        <span>🎙️</span>
+        پادکست دات‌نت
+    </div>
+
+    <h1>Polymorphism</h1>
+    <p>
+        آشنایی با Polymorphism، اجرای رفتارهای متفاوت از طریق یک abstraction مشترک و کاربرد آن در C# و .NET
+    </p>
+</section>
+
+<section class="lesson-section">
+    <div class="section-header">
+        <div class="section-number">01</div>
+        <div class="section-title">
+            <h2>Podcast Transcript &amp; Translation</h2>
+            <p>متن پادکست همراه با ترجمه فارسی</p>
+        </div>
+    </div>
+
+    <div class="lesson-audio">
+        <audio controls loop preload="none">
+            <source src="./audio/CPodcast/Polymorphism.mp3" type="audio/mpeg">
+            مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
+        </audio>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Hello.</p>
+            <p class="sentence-persian">سلام.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In this episode, we’re going to talk about one of the most important concepts in Object-Oriented Programming: <strong>Polymorphism</strong>.</p>
+            <p class="sentence-persian">در این قسمت می‌خواهیم درباره یکی از مهم‌ترین مفاهیم برنامه‌نویسی شیءگرا صحبت کنیم: <strong>Polymorphism</strong>.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The word Polymorphism may sound complicated, but the idea behind it is actually simple.</p>
+            <p class="sentence-persian">واژه Polymorphism ممکن است پیچیده به نظر برسد، اما ایده پشت آن در واقع ساده است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Polymorphism means:</p>
+            <p class="sentence-persian">Polymorphism یعنی:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english"><strong>One interface, many behaviors.</strong></p>
+            <p class="sentence-persian"><strong>یک interface، رفتارهای گوناگون.</strong></p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In other words, different objects can respond to the same operation in different ways.</p>
+            <p class="sentence-persian">به بیان دیگر، objectهای متفاوت می‌توانند به یک operation یکسان، به روش‌های متفاوت پاسخ دهند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Let’s look at a simple example.</p>
+            <p class="sentence-persian">بیایید یک مثال ساده را بررسی کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Imagine we have an application with different payment methods.</p>
+            <p class="sentence-persian">تصور کنید applicationی با روش‌های پرداخت مختلف داریم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">We have credit card payments, PayPal payments, and bank transfer payments.</p>
+            <p class="sentence-persian">پرداخت با کارت اعتباری، PayPal و انتقال بانکی داریم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">All of them can make a payment, but each one performs that operation differently.</p>
+            <p class="sentence-persian">همه آن‌ها می‌توانند پرداخت انجام دهند، اما هرکدام آن operation را به‌شکل متفاوتی اجرا می‌کنند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">We can start with a base class:</p>
+            <p class="sentence-persian">می‌توانیم با یک base class شروع کنیم:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class Payment
+{
+    public virtual void Pay()
+    {
+        Console.WriteLine("Processing payment...");
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Then we create different payment classes:</p>
+            <p class="sentence-persian">سپس classهای مختلف پرداخت را ایجاد می‌کنیم:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class CreditCardPayment : Payment
+{
+    public override void Pay()
+    {
+        Console.WriteLine("Paying by credit card.");
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">And another one:</p>
+            <p class="sentence-persian">و یک class دیگر:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class PayPalPayment : Payment
+{
+    public override void Pay()
+    {
+        Console.WriteLine("Paying with PayPal.");
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Now here is where Polymorphism becomes interesting.</p>
+            <p class="sentence-persian">حالا اینجاست که Polymorphism جالب می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">We can write:</p>
+            <p class="sentence-persian">می‌توانیم بنویسیم:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">Payment payment = new CreditCardPayment();
+
+payment.Pay();</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Even though the variable type is <code>Payment</code>, the object itself is a <code>CreditCardPayment</code>.</p>
+            <p class="sentence-persian">با اینکه type متغیر <code>Payment</code> است، خود object از نوع <code>CreditCardPayment</code> است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">So when we call <code>Pay</code>, C# runs the implementation from <code>CreditCardPayment</code>.</p>
+            <p class="sentence-persian">بنابراین وقتی <code>Pay</code> را فراخوانی می‌کنیم، C# پیاده‌سازی موجود در <code>CreditCardPayment</code> را اجرا می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">If we change the object:</p>
+            <p class="sentence-persian">اگر object را تغییر دهیم:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">Payment payment = new PayPalPayment();
+
+payment.Pay();</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">The same <code>Pay</code> method now produces different behavior.</p>
+            <p class="sentence-persian">همان method با نام <code>Pay</code> اکنون رفتار متفاوتی ایجاد می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">That is Polymorphism.</p>
+            <p class="sentence-persian">این همان Polymorphism است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The caller does not need to know exactly how each payment method works.</p>
+            <p class="sentence-persian">caller لازم نیست دقیقاً بداند هر روش پرداخت چگونه کار می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">It only knows that every payment can perform a <code>Pay</code> operation.</p>
+            <p class="sentence-persian">فقط می‌داند که هر payment می‌تواند operation مربوط به <code>Pay</code> را انجام دهد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">This makes our code much more flexible.</p>
+            <p class="sentence-persian">این ویژگی کد ما را بسیار انعطاف‌پذیرتر می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example, imagine we have a list of payments:</p>
+            <p class="sentence-persian">برای مثال، تصور کنید فهرستی از paymentها داریم:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">List&lt;Payment&gt; payments = new()
+{
+    new CreditCardPayment(),
+    new PayPalPayment()
+};</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Then we can process all of them using the same code:</p>
+            <p class="sentence-persian">سپس می‌توانیم همه آن‌ها را با یک کد یکسان پردازش کنیم:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">foreach (var payment in payments)
+{
+    payment.Pay();
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Each object automatically executes its own version of the method.</p>
+            <p class="sentence-persian">هر object به‌طور خودکار نسخه مخصوص خودش از آن method را اجرا می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In C#, runtime Polymorphism is commonly implemented using keywords such as:</p>
+            <p class="sentence-persian">در C#، runtime Polymorphism معمولاً با keywordهایی مانند موارد زیر پیاده‌سازی می‌شود:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english"><code>virtual</code>, <code>override</code>, and <code>abstract</code>.</p>
+            <p class="sentence-persian"><code>virtual</code>، <code>override</code> و <code>abstract</code>.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Interfaces are also heavily used for Polymorphism.</p>
+            <p class="sentence-persian">interfaceها نیز به‌طور گسترده برای Polymorphism استفاده می‌شوند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example:</p>
+            <p class="sentence-persian">برای مثال:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public interface IPayment
+{
+    void Pay();
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Different classes can implement this interface in completely different ways.</p>
+            <p class="sentence-persian">classهای مختلف می‌توانند این interface را به روش‌هایی کاملاً متفاوت پیاده‌سازی کنند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">This approach is extremely common in real .NET applications.</p>
+            <p class="sentence-persian">این رویکرد در applicationهای واقعی .NET بسیار رایج است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">You see it in <strong>Dependency Injection, repositories, services, logging providers, payment gateways, notification systems, and many design patterns</strong>.</p>
+            <p class="sentence-persian">آن را در <strong>Dependency Injection، repositoryها، serviceها، logging providerها، payment gatewayها، notification systemها و بسیاری از design patternها</strong> می‌بینید.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example, your application might depend on an <code>INotificationService</code>.</p>
+            <p class="sentence-persian">برای مثال، application شما ممکن است به یک <code>INotificationService</code> وابسته باشد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Today, the implementation might send emails.</p>
+            <p class="sentence-persian">امروز ممکن است implementation آن ایمیل ارسال کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Tomorrow, you could replace it with SMS or push notifications without changing the main business logic.</p>
+            <p class="sentence-persian">فردا می‌توانید بدون تغییر منطق اصلی کسب‌وکار، آن را با SMS یا push notification جایگزین کنید.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">That is one of the biggest advantages of Polymorphism.</p>
+            <p class="sentence-persian">این یکی از بزرگ‌ترین مزایای Polymorphism است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">It allows us to write code that depends on <strong>abstractions instead of concrete implementations</strong>.</p>
+            <p class="sentence-persian">Polymorphism به ما اجازه می‌دهد کدی بنویسیم که به‌جای concrete implementationها به <strong>abstractionها</strong> وابسته باشد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">As a result, our applications become easier to extend, test, and maintain.</p>
+            <p class="sentence-persian">در نتیجه، گسترش، آزمایش و نگهداری applicationهای ما آسان‌تر می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">So, if we want to summarize Polymorphism in one sentence:</p>
+            <p class="sentence-persian">پس اگر بخواهیم Polymorphism را در یک جمله خلاصه کنیم:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english"><strong>Polymorphism allows different objects to be treated through the same abstraction while providing their own behavior.</strong></p>
+            <p class="sentence-persian"><strong>Polymorphism اجازه می‌دهد objectهای متفاوت از طریق یک abstraction یکسان استفاده شوند و در عین حال رفتار مخصوص خودشان را ارائه دهند.</strong></p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Instead of writing code that constantly asks:</p>
+            <p class="sentence-persian">به‌جای نوشتن کدی که دائماً می‌پرسد:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">“Is this a credit card payment?”</p>
+            <p class="sentence-persian">«آیا این پرداخت با کارت اعتباری است؟»</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">“Is this PayPal?”</p>
+            <p class="sentence-persian">«آیا این PayPal است؟»</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">“Is this a bank transfer?”</p>
+            <p class="sentence-persian">«آیا این انتقال بانکی است؟»</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">We simply call:</p>
+            <p class="sentence-persian">به‌سادگی فراخوانی می‌کنیم:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english"><strong>Pay.</strong></p>
+            <p class="sentence-persian"><strong>Pay.</strong></p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">And each object knows what to do.</p>
+            <p class="sentence-persian">و هر object می‌داند چه کاری انجام دهد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">That is the real power of Polymorphism in .NET.</p>
+            <p class="sentence-persian">این قدرت واقعی Polymorphism در .NET است.</p>
+        </div>
+    </div>
+</section>
+
+<section class="lesson-section">
+    <div class="section-header">
+        <div class="section-number">02</div>
+        <div class="section-title">
+            <h2>Difficult &amp; Unfamiliar Words</h2>
+            <p>معنی کلمات و عبارت‌های دشوار یا ناآشنا</p>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="vocabulary-table dotnet-vocabulary-table">
+            <thead>
+                <tr>
+                    <th>واژه یا عبارت</th>
+                    <th>معنی فارسی</th>
+                    <th>کاربرد در متن</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Polymorphism</td>
+                    <td>چندریختی؛ ارائه رفتارهای متفاوت از طریق یک abstraction مشترک</td>
+                    <td dir="ltr">one interface, many behaviors</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">interface</td>
+                    <td>قراردادی مشترک برای رفتار classهای مختلف</td>
+                    <td dir="ltr">One interface, many behaviors</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">behavior</td>
+                    <td>رفتار، عملکرد</td>
+                    <td dir="ltr">providing their own behavior</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">operation</td>
+                    <td>عملیات</td>
+                    <td dir="ltr">respond to the same operation</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">payment method</td>
+                    <td>روش پرداخت</td>
+                    <td dir="ltr">different payment methods</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">bank transfer</td>
+                    <td>انتقال بانکی</td>
+                    <td dir="ltr">bank transfer payments</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">base class</td>
+                    <td>کلاس پایه</td>
+                    <td dir="ltr">start with a base class</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">implementation</td>
+                    <td>پیاده‌سازی</td>
+                    <td dir="ltr">runs the implementation</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">caller</td>
+                    <td>بخشی از کد که یک method را فراخوانی می‌کند</td>
+                    <td dir="ltr">The caller does not need to know</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">flexible</td>
+                    <td>انعطاف‌پذیر</td>
+                    <td dir="ltr">makes our code much more flexible</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">runtime</td>
+                    <td>زمان اجرای برنامه</td>
+                    <td dir="ltr">runtime Polymorphism</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">virtual</td>
+                    <td>keywordی برای قابل override کردن یک member</td>
+                    <td><code>public virtual void Pay()</code></td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">override</td>
+                    <td>ارائه پیاده‌سازی جدید برای یک member ارث‌برده‌شده</td>
+                    <td><code>public override void Pay()</code></td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">abstract</td>
+                    <td>keywordی برای تعریف type یا member انتزاعی</td>
+                    <td dir="ltr">virtual, override, and abstract</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Dependency Injection</td>
+                    <td>تزریق وابستگی</td>
+                    <td>دریافت dependencyها از بیرون یک class</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">payment gateway</td>
+                    <td>درگاه پرداخت</td>
+                    <td dir="ltr">payment gateways</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">abstraction</td>
+                    <td>انتزاع؛ قراردادی که جزئیات پیاده‌سازی را پنهان می‌کند</td>
+                    <td dir="ltr">the same abstraction</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">concrete implementation</td>
+                    <td>پیاده‌سازی مشخص و واقعی یک abstraction</td>
+                    <td dir="ltr">instead of concrete implementations</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">maintain</td>
+                    <td>نگهداری کردن</td>
+                    <td dir="ltr">easier to extend, test, and maintain</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<button id="completeLessonButton" class="complete-lesson-button" type="button">
+    <span>○</span>
+    علامت‌گذاری درس به‌عنوان تکمیل‌شده
+</button>
