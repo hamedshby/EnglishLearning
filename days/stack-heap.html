@@ -1,0 +1,414 @@
+<section class="lesson-hero">
+    <div class="lesson-badge">
+        <span>🎙️</span>
+        پادکست دات‌نت
+    </div>
+
+    <h1>Stack &amp; Heap in .NET</h1>
+    <p>
+        آشنایی با مفاهیم Stack و Heap در .NET، تفاوت value type و reference type و ارتباط آن‌ها با Garbage Collection
+    </p>
+</section>
+
+<section class="lesson-section">
+    <div class="section-header">
+        <div class="section-number">01</div>
+        <div class="section-title">
+            <h2>Podcast Transcript &amp; Translation</h2>
+            <p>متن پادکست همراه با ترجمه فارسی</p>
+        </div>
+    </div>
+
+    <div class="lesson-audio">
+        <audio controls loop preload="none">
+            <source src="./audio/CPodcast/Stack and Heap.mp3" type="audio/mpeg">
+            مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
+        </audio>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Hello.</p>
+            <p class="sentence-persian">سلام.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In this episode, we’re going to talk about two important memory concepts in .NET: <strong>Stack</strong> and <strong>Heap</strong>.</p>
+            <p class="sentence-persian">در این قسمت می‌خواهیم درباره دو مفهوم مهم مدیریت حافظه در .NET صحبت کنیم: <strong>Stack</strong> و <strong>Heap</strong>.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">If you work with C#, you often hear statements like:</p>
+            <p class="sentence-persian">اگر با C# کار می‌کنید، احتمالاً جمله‌هایی مثل این‌ها را زیاد شنیده‌اید:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">“Value types are stored on the Stack.”</p>
+            <p class="sentence-persian">«value typeها روی Stack ذخیره می‌شوند.»</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">“Objects are stored on the Heap.”</p>
+            <p class="sentence-persian">«objectها روی Heap ذخیره می‌شوند.»</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">These statements are useful as a starting point, but the real picture is a little more interesting.</p>
+            <p class="sentence-persian">این جمله‌ها به‌عنوان نقطه شروع مفید هستند، اما تصویر واقعی کمی جالب‌تر است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">So, what are the Stack and the Heap?</p>
+            <p class="sentence-persian">پس Stack و Heap دقیقاً چه هستند؟</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Let’s start with the Stack.</p>
+            <p class="sentence-persian">بیایید از Stack شروع کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The Stack is a region of memory that is mainly used for method execution.</p>
+            <p class="sentence-persian">Stack ناحیه‌ای از حافظه است که عمدتاً برای اجرای methodها استفاده می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Every time a method is called, .NET creates something called a stack frame.</p>
+            <p class="sentence-persian">هر بار که یک method فراخوانی می‌شود، .NET چیزی به نام stack frame ایجاد می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">That frame can contain things such as local variables, method parameters, and information needed to return to the calling method.</p>
+            <p class="sentence-persian">آن frame می‌تواند شامل مواردی مانند local variableها، method parameterها و اطلاعات لازم برای بازگشت به method فراخواننده باشد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example:</p>
+            <p class="sentence-persian">برای مثال:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">void Calculate()
+{
+    int number = 10;
+    int result = number * 2;
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Variables like <code>number</code> and <code>result</code> are simple local values, and they are typically associated with the current stack frame.</p>
+            <p class="sentence-persian">متغیرهایی مانند <code>number</code> و <code>result</code> مقادیر ساده local هستند و معمولاً به stack frame فعلی مرتبط‌اند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">When the method finishes, that stack frame is removed automatically.</p>
+            <p class="sentence-persian">وقتی method به پایان می‌رسد، آن stack frame به‌طور خودکار حذف می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">This makes stack allocation very fast.</p>
+            <p class="sentence-persian">همین موضوع باعث می‌شود stack allocation بسیار سریع باشد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Now let’s talk about the Heap.</p>
+            <p class="sentence-persian">حالا بیایید درباره Heap صحبت کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The Heap is used for dynamically allocated objects.</p>
+            <p class="sentence-persian">Heap برای objectهایی استفاده می‌شود که به‌صورت پویا (dynamically) allocate می‌شوند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example:</p>
+            <p class="sentence-persian">برای مثال:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">var customer = new Customer();</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">When we create a new object like this, the <code>Customer</code> object is normally allocated on the managed Heap.</p>
+            <p class="sentence-persian">وقتی object جدیدی مثل این می‌سازیم، object <code>Customer</code> معمولاً روی managed Heap allocate می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">But there is an important detail.</p>
+            <p class="sentence-persian">اما یک نکته مهم وجود دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The variable <code>customer</code> does not contain the entire object.</p>
+            <p class="sentence-persian">متغیر <code>customer</code> کل object را در خود ندارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">It contains a reference to that object.</p>
+            <p class="sentence-persian">آن یک reference به آن object را در خود دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">You can think of the reference as an address or a way to locate the object in memory.</p>
+            <p class="sentence-persian">می‌توانید reference را مانند یک آدرس یا راهی برای پیدا کردن object در حافظه در نظر بگیرید.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">So we may have a reference associated with the current method execution, while the actual object lives on the Heap.</p>
+            <p class="sentence-persian">پس ممکن است یک reference مرتبط با اجرای method فعلی داشته باشیم، در حالی که خود object روی Heap قرار دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">This difference becomes important when we compare value types and reference types.</p>
+            <p class="sentence-persian">این تفاوت زمانی اهمیت پیدا می‌کند که value typeها و reference typeها را با هم مقایسه کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Types such as: <code>int</code>, <code>bool</code>, <code>double</code>, and most <code>struct</code> types are value types.</p>
+            <p class="sentence-persian">typeهایی مانند <code>int</code>، <code>bool</code>، <code>double</code> و بیشتر typeهای <code>struct</code>، value type هستند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Classes, arrays, strings, and delegates are reference types.</p>
+            <p class="sentence-persian">classها، arrayها، stringها و delegateها، reference type هستند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">But saying that value types always live on the Stack is not completely correct.</p>
+            <p class="sentence-persian">اما گفتن اینکه value typeها همیشه روی Stack قرار دارند، کاملاً درست نیست.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">A value type can also exist inside an object on the Heap.</p>
+            <p class="sentence-persian">یک value type می‌تواند داخل یک object روی Heap هم وجود داشته باشد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example:</p>
+            <p class="sentence-persian">برای مثال:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class Product
+{
+    public decimal Price { get; set; }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english"><code>decimal</code> is a value type.</p>
+            <p class="sentence-persian"><code>decimal</code> یک value type است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">But because <code>Price</code> is part of a <code>Product</code> object, its value is stored as part of that object on the Heap.</p>
+            <p class="sentence-persian">اما چون <code>Price</code> بخشی از object <code>Product</code> است، مقدار آن به‌عنوان بخشی از آن object روی Heap ذخیره می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">So the important idea is not simply: “Value type equals Stack.”</p>
+            <p class="sentence-persian">پس ایده مهم این نیست که به‌سادگی بگوییم: «value type یعنی Stack.»</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">It is better to understand where the value belongs and how it is allocated.</p>
+            <p class="sentence-persian">بهتر است بفهمیم آن مقدار به کجا تعلق دارد و چگونه allocate می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Another major difference between Stack and Heap is memory management.</p>
+            <p class="sentence-persian">یک تفاوت مهم دیگر بین Stack و Heap، مدیریت حافظه است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Stack memory is released automatically when methods return.</p>
+            <p class="sentence-persian">حافظه Stack هنگام بازگشت methodها به‌طور خودکار آزاد می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Heap memory is managed by the Garbage Collector, or GC.</p>
+            <p class="sentence-persian">حافظه Heap توسط Garbage Collector یا GC مدیریت می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Suppose we write:</p>
+            <p class="sentence-persian">فرض کنید بنویسیم:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">var order = new Order();</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Later, if nothing in the application can reach that <code>Order</code> object anymore, it becomes eligible for garbage collection.</p>
+            <p class="sentence-persian">بعداً، اگر هیچ بخشی از application دیگر نتواند به آن object <code>Order</code> دسترسی پیدا کند، آن object برای garbage collection واجد شرایط می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The Garbage Collector can eventually reclaim that memory.</p>
+            <p class="sentence-persian">Garbage Collector در نهایت می‌تواند آن حافظه را پس بگیرد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">This is one of the major advantages of managed environments like .NET.</p>
+            <p class="sentence-persian">این یکی از مزیت‌های بزرگ محیط‌های managed مانند .NET است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">As developers, we usually don’t manually free managed objects.</p>
+            <p class="sentence-persian">ما به‌عنوان توسعه‌دهنده معمولاً managed objectها را به‌صورت دستی آزاد نمی‌کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The runtime handles most of that work for us.</p>
+            <p class="sentence-persian">runtime بیشتر آن کار را برای ما انجام می‌دهد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">However, understanding Stack and Heap is still very useful.</p>
+            <p class="sentence-persian">با این حال، درک Stack و Heap همچنان بسیار مفید است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">It helps us understand object lifetime, references, garbage collection, allocations, performance, and why certain pieces of code behave differently.</p>
+            <p class="sentence-persian">این درک به ما کمک می‌کند object lifetime، referenceها، garbage collection، allocationها، performance و دلیل رفتار متفاوت برخی کدها را بهتر بفهمیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example, if an application creates millions of temporary objects, it can create pressure on the Heap and increase the amount of work the Garbage Collector needs to do.</p>
+            <p class="sentence-persian">برای مثال، اگر یک application میلیون‌ها object موقت بسازد، می‌تواند روی Heap فشار ایجاد کند و مقدار کاری که Garbage Collector باید انجام دهد را افزایش دهد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">That can affect performance.</p>
+            <p class="sentence-persian">این موضوع می‌تواند روی performance تأثیر بگذارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">On the other hand, stack-based memory is usually very fast and has a very predictable lifetime.</p>
+            <p class="sentence-persian">از طرف دیگر، حافظه مبتنی بر stack معمولاً بسیار سریع است و lifetime بسیار قابل‌پیش‌بینی دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">So, if we want to summarize everything:</p>
+            <p class="sentence-persian">پس اگر بخواهیم همه‌چیز را خلاصه کنیم:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The Stack is mainly connected to method execution and short-lived data, while the Heap is mainly used for dynamically allocated objects whose lifetime can extend beyond a single method call.</p>
+            <p class="sentence-persian">Stack عمدتاً به اجرای method و دادهٔ کوتاه‌عمر مرتبط است، در حالی که Heap عمدتاً برای objectهایی استفاده می‌شود که به‌صورت پویا allocate می‌شوند و lifetime آن‌ها می‌تواند از یک method call فراتر برود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">And one final point is very important:</p>
+            <p class="sentence-persian">و یک نکته پایانی بسیار مهم است:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Don’t memorize the rule: “Value types are on the Stack and reference types are on the Heap.”</p>
+            <p class="sentence-persian">این قاعده را حفظ نکنید: «value typeها روی Stack و reference typeها روی Heap هستند.»</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Instead, understand the bigger picture.</p>
+            <p class="sentence-persian">در عوض، تصویر بزرگ‌تر را درک کنید.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In .NET, memory depends on context, allocation, object layout, and how values are used.</p>
+            <p class="sentence-persian">در .NET، حافظه به context، allocation، object layout و نحوه استفاده از مقادیر بستگی دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Once you understand Stack and Heap properly, concepts like reference types, value types, object lifetime, and Garbage Collection become much easier to understand.</p>
+            <p class="sentence-persian">وقتی Stack و Heap را درست درک کنید، مفاهیمی مانند reference type، value type، object lifetime و Garbage Collection بسیار قابل‌فهم‌تر می‌شوند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">And that is why Stack and Heap are such important foundations for every .NET developer.</p>
+            <p class="sentence-persian">و به همین دلیل است که Stack و Heap برای هر توسعه‌دهنده .NET، پایه‌های بسیار مهمی محسوب می‌شوند.</p>
+        </div>
+    </div>
+</section>
+
+<section class="lesson-section">
+    <div class="section-header">
+        <div class="section-number">02</div>
+        <div class="section-title">
+            <h2>Difficult &amp; Unfamiliar Words</h2>
+            <p>معنی کلمات و عبارت‌های دشوار یا ناآشنا</p>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="vocabulary-table dotnet-vocabulary-table">
+            <thead>
+                <tr>
+                    <th>واژه یا عبارت</th>
+                    <th>معنی فارسی</th>
+                    <th>کاربرد در متن</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Stack</td>
+                    <td>ناحیه‌ای از حافظه که برای اجرای methodها و دادهٔ کوتاه‌عمر استفاده می‌شود</td>
+                    <td dir="ltr">Stack and Heap</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Heap</td>
+                    <td>ناحیه‌ای از حافظه برای objectهای allocate‌شده به‌صورت پویا</td>
+                    <td dir="ltr">objects are stored on the Heap</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">stack frame</td>
+                    <td>بخشی از Stack که هنگام فراخوانی یک method ایجاد می‌شود</td>
+                    <td dir="ltr">.NET creates something called a stack frame</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">local variable</td>
+                    <td>متغیر محلی؛ متغیری که فقط درون یک method قابل دسترسی است</td>
+                    <td dir="ltr">local variables, method parameters</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">allocation</td>
+                    <td>تخصیص حافظه</td>
+                    <td dir="ltr">stack allocation very fast</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">dynamically allocated</td>
+                    <td>تخصیص‌یافته به‌صورت پویا در زمان اجرا</td>
+                    <td dir="ltr">dynamically allocated objects</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">managed Heap</td>
+                    <td>Heap مدیریت‌شده توسط runtime دات‌نت</td>
+                    <td dir="ltr">allocated on the managed Heap</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">reference</td>
+                    <td>ارجاع؛ اشاره‌گر به مکان یک object در حافظه</td>
+                    <td dir="ltr">it contains a reference to that object</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">value type</td>
+                    <td>typeای که مقدار آن مستقیماً ذخیره می‌شود، نه یک reference</td>
+                    <td dir="ltr">value types are stored on the Stack</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">reference type</td>
+                    <td>typeای که یک reference به مقدار واقعی را نگه می‌دارد</td>
+                    <td dir="ltr">reference types are on the Heap</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">struct</td>
+                    <td>نوعی value type در C#</td>
+                    <td dir="ltr">most struct types are value types</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">delegate</td>
+                    <td>typeای که به یک یا چند method اشاره می‌کند</td>
+                    <td dir="ltr">arrays, strings, and delegates are reference types</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">memory management</td>
+                    <td>مدیریت حافظه</td>
+                    <td dir="ltr">difference between Stack and Heap is memory management</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Garbage Collector (GC)</td>
+                    <td>مکانیزمی در .NET که حافظه استفاده‌نشده را به‌طور خودکار آزاد می‌کند</td>
+                    <td dir="ltr">managed by the Garbage Collector, or GC</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">eligible for garbage collection</td>
+                    <td>واجد شرایط برای جمع‌آوری توسط garbage collector</td>
+                    <td dir="ltr">it becomes eligible for garbage collection</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">managed environment</td>
+                    <td>محیطی که مدیریت حافظه در آن توسط runtime انجام می‌شود</td>
+                    <td dir="ltr">managed environments like .NET</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">object lifetime</td>
+                    <td>طول عمر یک object از ایجاد تا آزادسازی</td>
+                    <td dir="ltr">understand object lifetime</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">object layout</td>
+                    <td>نحوه چیدمان داده‌های یک object در حافظه</td>
+                    <td dir="ltr">context, allocation, object layout</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">predictable lifetime</td>
+                    <td>طول عمر قابل‌پیش‌بینی</td>
+                    <td dir="ltr">a very predictable lifetime</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<button id="completeLessonButton" class="complete-lesson-button" type="button">
+    <span>○</span>
+    علامت‌گذاری درس به‌عنوان تکمیل‌شده
+</button>
