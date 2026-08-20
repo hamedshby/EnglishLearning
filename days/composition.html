@@ -1,0 +1,441 @@
+<section class="lesson-hero">
+    <div class="lesson-badge">
+        <span>🎙️</span>
+        پادکست دات‌نت
+    </div>
+
+    <h1>Composition</h1>
+    <p>
+        آشنایی با Composition، ساخت objectهای پیچیده از objectهای کوچک‌تر و ایجاد designی انعطاف‌پذیر در .NET
+    </p>
+</section>
+
+<section class="lesson-section">
+    <div class="section-header">
+        <div class="section-number">01</div>
+        <div class="section-title">
+            <h2>Podcast Transcript &amp; Translation</h2>
+            <p>متن پادکست همراه با ترجمه فارسی</p>
+        </div>
+    </div>
+
+    <div class="lesson-audio">
+        <audio controls loop preload="none">
+            <source src="./audio/CPodcast/Composition.mp3" type="audio/mpeg">
+            مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
+        </audio>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Hello.</p>
+            <p class="sentence-persian">سلام.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In this episode, we’re going to talk about an important Object-Oriented Programming concept called <strong>Composition</strong>.</p>
+            <p class="sentence-persian">در این قسمت می‌خواهیم درباره یک concept مهم در Object-Oriented Programming به نام <strong>Composition</strong> صحبت کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Composition is a way of building complex objects by combining smaller objects together.</p>
+            <p class="sentence-persian">Composition روشی برای ساخت objectهای پیچیده از طریق ترکیب objectهای کوچک‌تر است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The main idea is simple:</p>
+            <p class="sentence-persian">ایده اصلی ساده است:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english"><strong>Instead of saying “is-a,” Composition usually represents a “has-a” relationship.</strong></p>
+            <p class="sentence-persian"><strong>به‌جای بیان relationship از نوع «is-a»، Composition معمولاً یک relationship از نوع «has-a» را نشان می‌دهد.</strong></p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Let’s look at an example.</p>
+            <p class="sentence-persian">بیایید یک مثال را بررسی کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Imagine we have a <code>Car</code> class.</p>
+            <p class="sentence-persian">تصور کنید یک class به نام <code>Car</code> داریم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">A car has an engine.</p>
+            <p class="sentence-persian">یک خودرو یک موتور دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">So instead of making <code>Car</code> inherit from <code>Engine</code>, we create an <code>Engine</code> object inside the <code>Car</code>.</p>
+            <p class="sentence-persian">بنابراین به‌جای اینکه <code>Car</code> از <code>Engine</code> ارث‌بری کند، یک object از نوع <code>Engine</code> درون <code>Car</code> می‌سازیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example:</p>
+            <p class="sentence-persian">برای مثال:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class Engine
+{
+    public void Start()
+    {
+        Console.WriteLine("Engine started.");
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">And then:</p>
+            <p class="sentence-persian">و سپس:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class Car
+{
+    private readonly Engine _engine;
+
+    public Car(Engine engine)
+    {
+        _engine = engine;
+    }
+
+    public void Start()
+    {
+        _engine.Start();
+        Console.WriteLine("Car is ready to move.");
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Here, the <code>Car</code> does not inherit from <code>Engine</code>.</p>
+            <p class="sentence-persian">در اینجا <code>Car</code> از <code>Engine</code> ارث‌بری نمی‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Instead, it <strong>uses</strong> an Engine.</p>
+            <p class="sentence-persian">در عوض، از یک Engine <strong>استفاده می‌کند</strong>.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">That is Composition.</p>
+            <p class="sentence-persian">این همان Composition است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">This approach is very common in modern .NET applications.</p>
+            <p class="sentence-persian">این رویکرد در applicationهای مدرن .NET بسیار رایج است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">And one of the biggest advantages of Composition is <strong>flexibility</strong>.</p>
+            <p class="sentence-persian">و یکی از بزرگ‌ترین مزیت‌های Composition، <strong>flexibility</strong> است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Imagine that later we have different engine types.</p>
+            <p class="sentence-persian">تصور کنید بعداً typeهای مختلفی از موتور داشته باشیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example:</p>
+            <p class="sentence-persian">برای مثال:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public interface IEngine
+{
+    void Start();
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Then we can create different implementations:</p>
+            <p class="sentence-persian">سپس می‌توانیم implementationهای مختلفی ایجاد کنیم:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class GasEngine : IEngine
+{
+    public void Start()
+    {
+        Console.WriteLine("Gas engine started.");
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">And:</p>
+            <p class="sentence-persian">و:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class ElectricEngine : IEngine
+{
+    public void Start()
+    {
+        Console.WriteLine("Electric motor started.");
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Now our <code>Car</code> can depend on the abstraction:</p>
+            <p class="sentence-persian">حالا <code>Car</code> ما می‌تواند به abstraction وابسته باشد:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class Car
+{
+    private readonly IEngine _engine;
+
+    public Car(IEngine engine)
+    {
+        _engine = engine;
+    }
+
+    public void Start()
+    {
+        _engine.Start();
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">This means we can give the car a gas engine or an electric engine without changing the <code>Car</code> class itself.</p>
+            <p class="sentence-persian">این یعنی می‌توانیم بدون تغییر خود class به نام <code>Car</code>، یک موتور بنزینی یا الکتریکی به آن بدهیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">That makes the design much easier to extend.</p>
+            <p class="sentence-persian">این کار گسترش design را بسیار آسان‌تر می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Composition is also closely related to <strong>Dependency Injection</strong>.</p>
+            <p class="sentence-persian">Composition ارتباط نزدیکی نیز با <strong>Dependency Injection</strong> دارد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In ASP.NET Core, we often inject services into other services.</p>
+            <p class="sentence-persian">در ASP.NET Core، ما اغلب serviceها را به serviceهای دیگر inject می‌کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example, an <code>OrderService</code> may use a payment service, a notification service, and a repository.</p>
+            <p class="sentence-persian">برای مثال، یک <code>OrderService</code> ممکن است از payment service، notification service و repository استفاده کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The <code>OrderService</code> does not inherit from any of them.</p>
+            <p class="sentence-persian"><code>OrderService</code> از هیچ‌کدام از آن‌ها ارث‌بری نمی‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">It simply uses them.</p>
+            <p class="sentence-persian">فقط از آن‌ها استفاده می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">That is Composition.</p>
+            <p class="sentence-persian">این همان Composition است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example:</p>
+            <p class="sentence-persian">برای مثال:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class OrderService
+{
+    private readonly IPaymentService _paymentService;
+    private readonly INotificationService _notificationService;
+
+    public OrderService(
+        IPaymentService paymentService,
+        INotificationService notificationService)
+    {
+        _paymentService = paymentService;
+        _notificationService = notificationService;
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">This design gives us another major benefit:</p>
+            <p class="sentence-persian">این design مزیت مهم دیگری به ما می‌دهد:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english"><strong>low coupling</strong>.</p>
+            <p class="sentence-persian"><strong>low coupling</strong>.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Each class focuses on its own responsibility and collaborates with other objects to complete more complex tasks.</p>
+            <p class="sentence-persian">هر class بر responsibility خودش تمرکز می‌کند و برای انجام taskهای پیچیده‌تر با objectهای دیگر همکاری می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Composition is often compared with Inheritance.</p>
+            <p class="sentence-persian">Composition اغلب با Inheritance مقایسه می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Inheritance is useful when there is a true <strong>is-a relationship</strong>.</p>
+            <p class="sentence-persian">Inheritance زمانی مفید است که یک <strong>is-a relationship</strong> واقعی وجود داشته باشد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example:</p>
+            <p class="sentence-persian">برای مثال:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">A Developer is an Employee.</p>
+            <p class="sentence-persian">یک Developer، Employee است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">But if one object simply needs another object to do its job, Composition is usually a better choice.</p>
+            <p class="sentence-persian">اما اگر یک object فقط برای انجام کارش به object دیگری نیاز دارد، Composition معمولاً انتخاب بهتری است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">This is why you may hear the famous software design principle:</p>
+            <p class="sentence-persian">به همین دلیل ممکن است این software design principle مشهور را بشنوید:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english"><strong>Favor Composition over Inheritance.</strong></p>
+            <p class="sentence-persian"><strong>Composition را به Inheritance ترجیح دهید.</strong></p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">It doesn’t mean inheritance is bad.</p>
+            <p class="sentence-persian">این جمله به این معنا نیست که Inheritance بد است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">It means we should not create inheritance hierarchies when simple object collaboration can give us a cleaner and more flexible design.</p>
+            <p class="sentence-persian">یعنی زمانی که همکاری ساده objectها designی تمیزتر و انعطاف‌پذیرتر به ما می‌دهد، نباید inheritance hierarchy بسازیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">So, if we want to summarize Composition in one sentence:</p>
+            <p class="sentence-persian">پس اگر بخواهیم Composition را در یک جمله خلاصه کنیم:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english"><strong>Composition means building objects by combining other objects and delegating responsibilities to them.</strong></p>
+            <p class="sentence-persian"><strong>Composition یعنی ساخت objectها از طریق ترکیب objectهای دیگر و delegate کردن responsibilityها به آن‌ها.</strong></p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In real .NET applications, Composition is everywhere.</p>
+            <p class="sentence-persian">در applicationهای واقعی .NET، Composition همه‌جا دیده می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">You see it in Dependency Injection, service design, Clean Architecture, Domain-Driven Design, and many common design patterns.</p>
+            <p class="sentence-persian">آن را در Dependency Injection، service design، Clean Architecture، Domain-Driven Design و بسیاری از design patternهای رایج می‌بینید.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">And when used correctly, Composition can make your code more flexible, testable, maintainable, and easier to change.</p>
+            <p class="sentence-persian">و زمانی که Composition به‌درستی استفاده شود، می‌تواند کد را انعطاف‌پذیرتر، testableتر، maintainableتر و تغییر آن را آسان‌تر کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">That is the real power of <strong>Composition in .NET</strong>.</p>
+            <p class="sentence-persian">این قدرت واقعی <strong>Composition در .NET</strong> است.</p>
+        </div>
+    </div>
+</section>
+
+<section class="lesson-section">
+    <div class="section-header">
+        <div class="section-number">02</div>
+        <div class="section-title">
+            <h2>Difficult &amp; Unfamiliar Words</h2>
+            <p>معنی کلمات و عبارت‌های دشوار یا ناآشنا</p>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="vocabulary-table dotnet-vocabulary-table">
+            <thead>
+                <tr>
+                    <th>واژه یا عبارت</th>
+                    <th>معنی فارسی</th>
+                    <th>کاربرد در متن</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Composition</td>
+                    <td>ساخت object از طریق ترکیب objectهای کوچک‌تر</td>
+                    <td dir="ltr">building complex objects</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">has-a relationship</td>
+                    <td>relationshipی که در آن یک object، object دیگری را در اختیار دارد</td>
+                    <td dir="ltr">represents a has-a relationship</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">is-a relationship</td>
+                    <td>relationship میان derived type و base type آن</td>
+                    <td dir="ltr">a true is-a relationship</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">combine</td>
+                    <td>ترکیب کردن</td>
+                    <td dir="ltr">combining smaller objects</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">inherit</td>
+                    <td>ارث‌بری کردن</td>
+                    <td dir="ltr">Car does not inherit from Engine</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">flexibility</td>
+                    <td>انعطاف‌پذیری</td>
+                    <td dir="ltr">advantages of Composition</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">implementation</td>
+                    <td>پیاده‌سازی یک contract</td>
+                    <td dir="ltr">different implementations</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">abstraction</td>
+                    <td>contractی که جزئیات implementation را پنهان می‌کند</td>
+                    <td dir="ltr">depend on the abstraction</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Dependency Injection</td>
+                    <td>دریافت dependencyهای یک class از بیرون</td>
+                    <td dir="ltr">inject services into other services</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">repository</td>
+                    <td>componentی برای access به data و مدیریت persistence</td>
+                    <td dir="ltr">a notification service, and a repository</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">low coupling</td>
+                    <td>وابستگی کم بین componentها</td>
+                    <td dir="ltr">another major benefit</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">responsibility</td>
+                    <td>وظیفه مشخص یک class</td>
+                    <td dir="ltr">focuses on its own responsibility</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">collaborate</td>
+                    <td>همکاری کردن</td>
+                    <td dir="ltr">collaborates with other objects</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">inheritance hierarchy</td>
+                    <td>ساختار چندسطحی base classها و derived classها</td>
+                    <td dir="ltr">create inheritance hierarchies</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">delegate</td>
+                    <td>سپردن انجام یک responsibility به object دیگر</td>
+                    <td dir="ltr">delegating responsibilities</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">maintainable</td>
+                    <td>قابل نگهداری و تغییر با هزینه کمتر</td>
+                    <td dir="ltr">testable, maintainable</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<button id="completeLessonButton" class="complete-lesson-button" type="button">
+    <span>○</span>
+    علامت‌گذاری درس به‌عنوان تکمیل‌شده
+</button>

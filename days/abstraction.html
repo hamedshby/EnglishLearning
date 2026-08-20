@@ -1,0 +1,405 @@
+<section class="lesson-hero">
+    <div class="lesson-badge">
+        <span>🎙️</span>
+        پادکست دات‌نت
+    </div>
+
+    <h1>Abstraction</h1>
+    <p>
+        آشنایی با Abstraction، پنهان‌کردن پیچیدگی پشت contractهای شفاف و کاربرد آن در C# و .NET
+    </p>
+</section>
+
+<section class="lesson-section">
+    <div class="section-header">
+        <div class="section-number">01</div>
+        <div class="section-title">
+            <h2>Podcast Transcript &amp; Translation</h2>
+            <p>متن پادکست همراه با ترجمه فارسی</p>
+        </div>
+    </div>
+
+    <div class="lesson-audio">
+        <audio controls loop preload="none">
+            <source src="./audio/CPodcast/Abstraction.mp3" type="audio/mpeg">
+            مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
+        </audio>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Hello.</p>
+            <p class="sentence-persian">سلام.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In this episode, we’re going to talk about another important principle of Object-Oriented Programming: <strong>Abstraction</strong>.</p>
+            <p class="sentence-persian">در این قسمت می‌خواهیم درباره یکی دیگر از principleهای مهم Object-Oriented Programming صحبت کنیم: <strong>Abstraction</strong>.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Abstraction is one of those concepts that sounds complicated at first, but we actually use it all the time in everyday life.</p>
+            <p class="sentence-persian">Abstraction از آن conceptهایی است که در ابتدا پیچیده به نظر می‌رسد، اما در زندگی روزمره همیشه از آن استفاده می‌کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Think about driving a car.</p>
+            <p class="sentence-persian">رانندگی با یک خودرو را تصور کنید.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">When you press the brake pedal, you don’t need to understand exactly how the hydraulic system works.</p>
+            <p class="sentence-persian">وقتی پدال ترمز را فشار می‌دهید، لازم نیست دقیقاً بدانید سیستم هیدرولیک چگونه کار می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">When you turn the steering wheel, you don’t need to know every mechanical detail inside the steering system.</p>
+            <p class="sentence-persian">وقتی فرمان را می‌چرخانید، لازم نیست تمام جزئیات مکانیکی داخل سیستم فرمان را بدانید.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">You only interact with the parts you need.</p>
+            <p class="sentence-persian">شما فقط با بخش‌هایی تعامل دارید که به آن‌ها نیاز دارید.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The complexity is hidden from you.</p>
+            <p class="sentence-persian">پیچیدگی از شما پنهان شده است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">That is the basic idea behind Abstraction.</p>
+            <p class="sentence-persian">این همان ایده اصلی Abstraction است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In software development, <strong>Abstraction means hiding unnecessary implementation details and exposing only the behavior that other parts of the application need to use.</strong></p>
+            <p class="sentence-persian">در software development، <strong>Abstraction یعنی پنهان‌کردن جزئیات غیرضروری implementation و نمایش فقط رفتاری که بخش‌های دیگر application به آن نیاز دارند.</strong></p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Let’s look at a simple .NET example.</p>
+            <p class="sentence-persian">بیایید یک مثال ساده در .NET را بررسی کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Imagine we are building a payment system.</p>
+            <p class="sentence-persian">تصور کنید در حال ساختن یک سیستم پرداخت هستیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">We may have different payment providers, but the rest of the application should not care about the internal details of each provider.</p>
+            <p class="sentence-persian">ممکن است payment providerهای مختلفی داشته باشیم، اما بقیه application نباید درگیر جزئیات داخلی هر provider شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">We can create an interface:</p>
+            <p class="sentence-persian">می‌توانیم یک interface ایجاد کنیم:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public interface IPaymentService
+{
+    Task PayAsync(decimal amount);
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Now we can create an implementation:</p>
+            <p class="sentence-persian">حالا می‌توانیم یک implementation بسازیم:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class CreditCardPaymentService : IPaymentService
+{
+    public async Task PayAsync(decimal amount)
+    {
+        // Validate card
+
+        // Connect to payment gateway
+
+        // Send payment request
+
+        // Process response
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">The important point is that the code using <code>IPaymentService</code> does not need to know how the payment is processed.</p>
+            <p class="sentence-persian">نکته مهم این است که کدی که از <code>IPaymentService</code> استفاده می‌کند، لازم نیست بداند پرداخت چگونه پردازش می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">It simply calls:</p>
+            <p class="sentence-persian">آن فقط این method را فراخوانی می‌کند:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">await paymentService.PayAsync(100);</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">The complicated details are hidden behind the abstraction.</p>
+            <p class="sentence-persian">جزئیات پیچیده پشت آن abstraction پنهان شده‌اند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">This gives us a very important advantage.</p>
+            <p class="sentence-persian">این کار یک مزیت بسیار مهم به ما می‌دهد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">We can change the implementation without changing the code that uses it.</p>
+            <p class="sentence-persian">می‌توانیم implementation را بدون تغییر کدی که از آن استفاده می‌کند، عوض کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example, today we might use a credit card provider.</p>
+            <p class="sentence-persian">برای مثال، ممکن است امروز از یک provider کارت اعتباری استفاده کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Tomorrow, we could create another implementation:</p>
+            <p class="sentence-persian">فردا می‌توانیم implementation دیگری ایجاد کنیم:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class BankPaymentService : IPaymentService
+{
+    public async Task PayAsync(decimal amount)
+    {
+        // Process payment through a bank
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">The business logic can continue working with <code>IPaymentService</code>.</p>
+            <p class="sentence-persian">business logic می‌تواند همچنان با <code>IPaymentService</code> کار کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">It doesn’t need to know which specific payment provider is being used.</p>
+            <p class="sentence-persian">لازم نیست بداند کدام payment provider مشخص در حال استفاده است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">In C#, Abstraction is commonly implemented using <strong>interfaces</strong> and <strong>abstract classes</strong>.</p>
+            <p class="sentence-persian">در C#، Abstraction معمولاً با استفاده از <strong>interfaceها</strong> و <strong>abstract classها</strong> پیاده‌سازی می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">An interface defines what an object can do.</p>
+            <p class="sentence-persian">یک interface مشخص می‌کند که یک object چه کاری می‌تواند انجام دهد.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">An abstract class can define both common behavior and abstract behavior that derived classes must implement.</p>
+            <p class="sentence-persian">یک abstract class می‌تواند هم رفتار مشترک و هم رفتار abstractی را تعریف کند که derived classها باید پیاده‌سازی کنند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example:</p>
+            <p class="sentence-persian">برای مثال:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public abstract class NotificationService
+{
+    public abstract void Send(string message);
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">Then different implementations can provide their own behavior:</p>
+            <p class="sentence-persian">سپس implementationهای مختلف می‌توانند رفتار مخصوص خود را ارائه دهند:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public class EmailNotificationService : NotificationService
+{
+    public override void Send(string message)
+    {
+        Console.WriteLine("Sending email...");
+    }
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english">And another implementation might send an SMS.</p>
+            <p class="sentence-persian">و implementation دیگری ممکن است SMS ارسال کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">This idea is everywhere in modern .NET development.</p>
+            <p class="sentence-persian">این ایده در همه‌جای .NET development مدرن دیده می‌شود.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">When we use <strong>Dependency Injection</strong>, we usually inject abstractions such as interfaces instead of directly depending on concrete classes.</p>
+            <p class="sentence-persian">وقتی از <strong>Dependency Injection</strong> استفاده می‌کنیم، معمولاً به‌جای وابستگی مستقیم به concrete classها، abstractionهایی مانند interfaceها را inject می‌کنیم.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">For example:</p>
+            <p class="sentence-persian">برای مثال:</p>
+        </div>
+    </div>
+
+    <div class="answer-example" dir="ltr" style="text-align: left;">
+        <pre><code class="language-csharp">public OrderService(IPaymentService paymentService)
+{
+}</code></pre>
+    </div>
+
+    <div class="sentence-list podcast-transcript">
+        <div class="sentence-card">
+            <p class="sentence-english"><code>OrderService</code> doesn’t care how the payment system works internally.</p>
+            <p class="sentence-persian"><code>OrderService</code> اهمیتی نمی‌دهد که سیستم پرداخت در داخل چگونه کار می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">It only knows what operations are available through <code>IPaymentService</code>.</p>
+            <p class="sentence-persian">فقط می‌داند چه operationهایی از طریق <code>IPaymentService</code> در دسترس هستند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">This helps reduce coupling between different parts of the application.</p>
+            <p class="sentence-persian">این کار به کاهش coupling بین بخش‌های مختلف application کمک می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">It also makes the code easier to test, maintain, and extend.</p>
+            <p class="sentence-persian">همچنین test، نگهداری و گسترش کد را آسان‌تر می‌کند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">Abstraction is closely related to Encapsulation, but they are not exactly the same.</p>
+            <p class="sentence-persian">Abstraction ارتباط نزدیکی با Encapsulation دارد، اما این دو دقیقاً یکسان نیستند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english"><strong>Encapsulation protects the internal state of an object.</strong></p>
+            <p class="sentence-persian"><strong>Encapsulation از state داخلی یک object محافظت می‌کند.</strong></p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english"><strong>Abstraction hides unnecessary complexity from the consumer.</strong></p>
+            <p class="sentence-persian"><strong>Abstraction پیچیدگی غیرضروری را از consumer پنهان می‌کند.</strong></p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">So, if we want to summarize Abstraction in one sentence:</p>
+            <p class="sentence-persian">پس اگر بخواهیم Abstraction را در یک جمله خلاصه کنیم:</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english"><strong>Abstraction means showing what an object can do while hiding the details of how it does it.</strong></p>
+            <p class="sentence-persian"><strong>Abstraction یعنی نشان‌دادن اینکه یک object چه کاری می‌تواند انجام دهد، در حالی که جزئیات چگونگی انجام آن پنهان می‌شود.</strong></p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">And that is one of the reasons abstraction is so powerful in .NET.</p>
+            <p class="sentence-persian">و این یکی از دلایل قدرتمندبودن Abstraction در .NET است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">It allows us to build systems where different components communicate through clear contracts without needing to understand each other’s internal implementation.</p>
+            <p class="sentence-persian">Abstraction به ما اجازه می‌دهد سیستم‌هایی بسازیم که componentهای مختلف از طریق contractهای شفاف با هم ارتباط برقرار کنند، بدون اینکه لازم باشد implementation داخلی یکدیگر را بفهمند.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">The result is software that is more flexible, easier to change, and much easier to maintain.</p>
+            <p class="sentence-persian">نتیجه، نرم‌افزاری است که انعطاف‌پذیرتر، تغییرپذیرتر و بسیار آسان‌تر قابل نگهداری است.</p>
+        </div>
+        <div class="sentence-card">
+            <p class="sentence-english">And that is the real power of <strong>Abstraction in Object-Oriented Programming</strong>.</p>
+            <p class="sentence-persian">و این قدرت واقعی <strong>Abstraction در Object-Oriented Programming</strong> است.</p>
+        </div>
+    </div>
+</section>
+
+<section class="lesson-section">
+    <div class="section-header">
+        <div class="section-number">02</div>
+        <div class="section-title">
+            <h2>Difficult &amp; Unfamiliar Words</h2>
+            <p>معنی کلمات و عبارت‌های دشوار یا ناآشنا</p>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="vocabulary-table dotnet-vocabulary-table">
+            <thead>
+                <tr>
+                    <th>واژه یا عبارت</th>
+                    <th>معنی فارسی</th>
+                    <th>کاربرد در متن</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Abstraction</td>
+                    <td>پنهان‌کردن پیچیدگی غیرضروری و ارائه یک contract ساده</td>
+                    <td dir="ltr">the basic idea behind Abstraction</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">implementation detail</td>
+                    <td>جزئیات پیاده‌سازی</td>
+                    <td dir="ltr">hiding unnecessary implementation details</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">expose</td>
+                    <td>در دسترس قرار دادن، نمایش دادن</td>
+                    <td dir="ltr">exposing only the behavior</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">behavior</td>
+                    <td>رفتار، عملکرد</td>
+                    <td dir="ltr">common behavior and abstract behavior</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">payment provider</td>
+                    <td>سرویس‌دهنده پرداخت</td>
+                    <td dir="ltr">different payment providers</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">interface</td>
+                    <td>contractی که memberهای مورد انتظار را مشخص می‌کند</td>
+                    <td><code>IPaymentService</code></td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">abstract class</td>
+                    <td>classی که می‌تواند رفتار مشترک و memberهای abstract داشته باشد</td>
+                    <td><code>NotificationService</code></td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">derived class</td>
+                    <td>classی که از class دیگری ارث‌بری می‌کند</td>
+                    <td dir="ltr">derived classes must implement</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">payment gateway</td>
+                    <td>درگاه پرداخت</td>
+                    <td dir="ltr">Connect to payment gateway</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">business logic</td>
+                    <td>قوانین و فرایندهای اصلی کسب‌وکار در application</td>
+                    <td dir="ltr">The business logic can continue working</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">Dependency Injection</td>
+                    <td>دریافت dependencyهای یک class از بیرون</td>
+                    <td dir="ltr">When we use Dependency Injection</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">concrete class</td>
+                    <td>class مشخصی که implementation واقعی را ارائه می‌دهد</td>
+                    <td dir="ltr">depending on concrete classes</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">coupling</td>
+                    <td>میزان وابستگی بین componentها</td>
+                    <td dir="ltr">reduce coupling</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">consumer</td>
+                    <td>کد یا componentی که از یک API یا abstraction استفاده می‌کند</td>
+                    <td dir="ltr">complexity from the consumer</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">contract</td>
+                    <td>توافقی شفاف درباره operationهای قابل استفاده</td>
+                    <td dir="ltr">communicate through clear contracts</td>
+                </tr>
+                <tr class="vocabulary-row">
+                    <td dir="ltr">maintain</td>
+                    <td>نگهداری کردن</td>
+                    <td dir="ltr">much easier to maintain</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<button id="completeLessonButton" class="complete-lesson-button" type="button">
+    <span>○</span>
+    علامت‌گذاری درس به‌عنوان تکمیل‌شده
+</button>
